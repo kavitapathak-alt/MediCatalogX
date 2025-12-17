@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Pill, Filter, Search, Shield, Thermometer, Home, Syringe, Clock, AlertCircle, ChevronDown, Phone, Star, Truck, CheckCircle } from "lucide-react";
-import MedicineCard from "@/app/components/MedicineCard";
+import { Pill, Filter, Search, Shield, Thermometer, ChevronDown, Phone, Star, Truck, X, ShoppingCart, AlertCircle, CheckCircle } from "lucide-react";
 
 const generalMedicines = [
   {
@@ -12,8 +11,8 @@ const generalMedicines = [
     storage: "Room Temperature",
     price: 25,
     prescription: false,
-    image: "/images/medicines/paracetamol.jpg",
-    description: "Paracetamol (Acetaminophen) is a common analgesic and antipyretic used to treat mild to moderate pain and fever. It works by inhibiting prostaglandin synthesis in the brain. It's commonly used for headaches, muscle aches, arthritis, backache, toothaches, colds, and fevers.",
+    image: "https://5.imimg.com/data5/SELLER/Default/2024/4/407801097/RC/YV/RU/13501949/furosemide-20mg-spironolactone-50mg-tablets-1000x1000.jpeg",
+    description: "Paracetamol (Acetaminophen) is a common analgesic and antipyretic used to treat mild to moderate pain and fever. It works by inhibiting prostaglandin synthesis in the brain.",
     rating: 4.2,
     brand: "Cipla",
     dosage: "500 mg",
@@ -31,8 +30,8 @@ const generalMedicines = [
     storage: "Room Temperature",
     price: 120,
     prescription: true,
-    image: "/images/medicines/amoxicillin.jpg",
-    description: "Amoxicillin is a penicillin-type antibiotic that fights bacteria. It is used to treat many different types of infection caused by bacteria, such as tonsillitis, bronchitis, pneumonia, and infections of the ear, nose, throat, skin, or urinary tract.",
+    image: "https://5.imimg.com/data5/SELLER/Default/2022/1/AV/FS/MP/13166357/frusemde-ip-20mg-spironolactone-ip-50mg--1000x1000.jpg",
+    description: "Amoxicillin is a penicillin-type antibiotic that fights bacteria. It is used to treat many different types of infection caused by bacteria.",
     rating: 4.0,
     brand: "GSK",
     dosage: "250 mg",
@@ -50,8 +49,8 @@ const generalMedicines = [
     storage: "Room Temperature",
     price: 45,
     prescription: false,
-    image: "/images/medicines/cetirizine.jpg",
-    description: "Cetirizine is an antihistamine used to relieve allergy symptoms such as watery eyes, runny nose, itching eyes/nose, sneezing, hives, and itching. It works by blocking histamine, a substance in the body that causes allergic symptoms.",
+    image: "https://alleviareindia.com/wp-content/uploads/elementor/thumbs/evrysdi-qd79yu1mhqvj81z21wpnct3yk5svfcpw6zxtue1y14.webp",
+    description: "Cetirizine is an antihistamine used to relieve allergy symptoms such as watery eyes, runny nose, itching eyes/nose, sneezing, hives, and itching.",
     rating: 4.5,
     brand: "Dr. Reddy's",
     dosage: "10 mg",
@@ -68,8 +67,8 @@ const generalMedicines = [
     storage: "Room Temperature",
     price: 85,
     prescription: true,
-    image: "/images/medicines/omeprazole.jpg",
-    description: "Omeprazole is a proton pump inhibitor that decreases the amount of acid produced in the stomach. It is used to treat symptoms of gastroesophageal reflux disease (GERD) and other conditions caused by excess stomach acid.",
+    image: "https://images.unsplash.com/photo-1556228578-9c360e1d8d34?auto=format&fit=crop&w=400&h=400&q=80",
+    description: "Omeprazole is a proton pump inhibitor that decreases the amount of acid produced in the stomach. Used to treat GERD and other acid-related conditions.",
     rating: 4.3,
     brand: "Sun Pharma",
     dosage: "20 mg",
@@ -87,8 +86,8 @@ const generalMedicines = [
     storage: "Room Temperature",
     price: 65,
     prescription: true,
-    image: "/images/medicines/metformin.jpg",
-    description: "Metformin is used with a proper diet and exercise program to control high blood sugar in patients with type 2 diabetes. It helps control blood sugar by helping your body respond better to insulin and decreasing the amount of sugar your liver makes.",
+    image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=400&h=400&q=80",
+    description: "Metformin is used with a proper diet and exercise program to control high blood sugar in patients with type 2 diabetes.",
     rating: 4.4,
     brand: "USV",
     dosage: "500 mg",
@@ -105,8 +104,8 @@ const generalMedicines = [
     storage: "Room Temperature",
     price: 95,
     prescription: true,
-    image: "/images/medicines/atorvastatin.jpg",
-    description: "Atorvastatin is a statin medication used to prevent cardiovascular disease in those at high risk and to treat abnormal lipid levels. It works by blocking an enzyme in the liver that the body uses to make cholesterol.",
+    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&h=400&q=80",
+    description: "Atorvastatin is a statin medication used to prevent cardiovascular disease in those at high risk and to treat abnormal lipid levels.",
     rating: 4.6,
     brand: "Pfizer",
     dosage: "10 mg",
@@ -124,8 +123,8 @@ const generalMedicines = [
     storage: "Cool & Dry Place",
     price: 40,
     prescription: false,
-    image: "/images/medicines/vitamin-c.jpg",
-    description: "Vitamin C is a water-soluble vitamin that is essential for normal growth and development. It is required for the growth and repair of tissues in all parts of your body. Vitamin C is also an antioxidant that helps protect your cells against free radicals.",
+    image: "https://images.unsplash.com/photo-1556228578-9d7257f5f8fb?auto=format&fit=crop&w=400&h=400&q=80",
+    description: "Vitamin C is a water-soluble vitamin that is essential for normal growth and development. Required for the growth and repair of tissues.",
     rating: 4.7,
     brand: "Himalaya",
     dosage: "500 mg",
@@ -141,8 +140,8 @@ const generalMedicines = [
     storage: "Room Temperature",
     price: 35,
     prescription: true,
-    image: "/images/medicines/diclofenac.jpg",
-    description: "Diclofenac is a nonsteroidal anti-inflammatory drug (NSAID) used to treat mild to moderate pain, and helps to relieve symptoms of arthritis. It works by reducing substances in the body that cause pain and inflammation.",
+    image: "https://images.unsplash.com/photo-1556228578-9d7257f5f8fb?auto=format&fit=crop&w=400&h=400&q=80",
+    description: "Diclofenac is a nonsteroidal anti-inflammatory drug (NSAID) used to treat mild to moderate pain, and helps to relieve symptoms of arthritis.",
     rating: 4.1,
     brand: "Novartis",
     dosage: "50 mg",
@@ -158,47 +157,34 @@ const heroSlides = [
   {
     title: "Essential General Medicines",
     subtitle: "Prescription & OTC • Quality Assured • 24/7 Delivery",
-    image: "https://i.fbcd.co/products/resized/resized-750-500/a90202c9c0c8b0b4a345f1204a8f725fded7238480675961e5923d1513b084ab.jpg"
+    image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=1200&q=80"
   },
   {
     title: "Chronic Disease Management",
     subtitle: "Diabetes • Hypertension • Cholesterol • Thyroid Care",
-    image: "https://media.istockphoto.com/id/137939146/photo/colorful-assortment-of-medicine-tables-capsules.jpg?s=1024x1024&w=is&k=20&c=7dxYKzsS5rFf6Xss1leyMQ6qe4iKh20ijiQbtJ6OiYs="
-  },
-  {
-    title: "Family Healthcare Essentials",
-    subtitle: "First Aid • Cold & Cough • Digestive • Pain Relief",
     image: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    title: "Trusted Pharmaceutical Brands",
-    subtitle: "Cipla • Sun Pharma • GSK • Abbott • Himalaya",
-    image: "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=1200&q=80"
   }
 ];
 
 const categories = [
-  { id: "all", name: "All Medicines", icon: "💊" },
-  { id: "fever", name: "Fever & Pain", icon: "🤒" },
-  { id: "allergy", name: "Allergy", icon: "🤧" },
-  { id: "diabetes", name: "Diabetes", icon: "🩸" },
-  { id: "heart", name: "Heart Care", icon: "❤️" },
-  { id: "digestive", name: "Digestive", icon: "🩺" },
-  { id: "antibiotics", name: "Antibiotics", icon: "🦠" },
-  { id: "vitamins", name: "Vitamins", icon: "💊" },
-  { id: "pain", name: "Pain Relief", icon: "😖" },
-  { id: "skin", name: "Skin Care", icon: "🧴" }
+  { id: "all", label: "All Products", icon: <Pill className="w-4 h-4" /> },
+  { id: "fever", label: "Fever & Pain", icon: <span>🤒</span> },
+  { id: "allergy", label: "Allergy", icon: <span>🤧</span> },
+  { id: "diabetes", label: "Diabetes", icon: <AlertCircle className="w-4 h-4" /> },
+  { id: "heart", label: "Heart Care", icon: <span>❤️</span> },
+  { id: "digestive", label: "Digestive", icon: <span>🩺</span> },
+  { id: "antibiotics", label: "Antibiotics", icon: <span>🦠</span> },
+  { id: "vitamins", label: "Vitamins", icon: <span>💊</span> }
 ];
 
 export default function MedicinesPage() {
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [sortBy, setSortBy] = useState<string>("featured");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [sortBy, setSortBy] = useState("featured");
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState<typeof generalMedicines[0] | null>(null);
 
-  // Auto slide every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
@@ -206,218 +192,208 @@ export default function MedicinesPage() {
     return () => clearInterval(interval);
   }, []);
 
-  const filteredMedicines = selectedCategory === "all" 
-    ? generalMedicines 
-    : generalMedicines.filter(medicine => 
-        medicine.category === selectedCategory
-      );
+  // Filter logic - EXACTLY like injections page
+  const filteredProducts = generalMedicines
+    .filter(product => {
+      // Search filter
+      if (searchQuery) {
+        const searchLower = searchQuery.toLowerCase();
+        const matchesSearch = 
+          product.name.toLowerCase().includes(searchLower) ||
+          product.type.toLowerCase().includes(searchLower) ||
+          product.brand?.toLowerCase().includes(searchLower) ||
+          product.description.toLowerCase().includes(searchLower);
+        if (!matchesSearch) return false;
+      }
+      
+      // Category filter
+      if (selectedCategory !== "all") {
+        return product.category === selectedCategory;
+      }
+      
+      return true;
+    })
+    .sort((a, b) => {
+      switch(sortBy) {
+        case "price-low":
+          return a.price - b.price;
+        case "price-high":
+          return b.price - a.price;
+        default:
+          return 0; // featured order
+      }
+    });
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  const handleAddToCart = (product: typeof generalMedicines[0]) => {
+    console.log("Added to cart:", product.name);
+    alert(`${product.name} added to cart!`);
   };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
-  };
-
-  const handleViewDetails = (id: number) => {
-    console.log("View details for medicine ID:", id);
-    // You can implement navigation or modal here
-  };
-
-  // Sort medicines based on sortBy
-  const sortedMedicines = [...filteredMedicines].sort((a, b) => {
-    switch (sortBy) {
-      case "price-low":
-        return a.price - b.price;
-      case "price-high":
-        return b.price - a.price;
-      case "rating":
-        return b.rating - a.rating;
-      case "newest":
-        return b.id - a.id;
-      default:
-        return 0;
-    }
-  });
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Carousel */}
-      <div className="relative h-[50vh] sm:h-[55vh] md:h-[60vh] overflow-hidden">
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero - EXACTLY like injections page */}
+      <div className="relative h-[40vh] sm:h-[50vh] overflow-hidden">
         {heroSlides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-500 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+            className={`absolute inset-0 transition-opacity duration-500 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
           >
-            {/* Background Image */}
-            <img 
-              src={slide.image} 
-              alt=""
-              className="w-full h-full object-cover"
-            />
-
-            {/* Green Overlay (changed from blue to green for medicines) */}
-            <div className="absolute inset-0 bg-gradient-to-t from-green-900/80 via-green-800/60 to-transparent"></div>
-
-            {/* Content */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8">
+            <img src={slide.image} alt="" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-blue-800/60 to-transparent"></div>
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
               <div className="max-w-4xl mx-auto">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-1 bg-green-500 px-2 py-1 rounded-full mb-3 max-w-max">
+                <div className="inline-flex items-center gap-1 bg-yellow-500 px-2 py-1 rounded-full mb-2">
                   <Pill className="w-3 h-3 text-white" />
-                  <span className="text-xs font-bold text-white">Pharmacy & Medicines</span>
+                  <span className="text-xs font-bold text-white">Pharmacy Specialists</span>
                 </div>
-
-                {/* Title */}
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 leading-tight">
-                  {slide.title}
-                </h1>
-                
-                {/* Subtitle */}
-                <p className="text-sm sm:text-base text-white/90 mb-4 max-w-md">
-                  {slide.subtitle}
-                </p>
-                
-                {/* Search Bar */}
-                <div className="max-w-md">
-                  <div className="flex flex-col sm:flex-row gap-2">
-                    <div className="flex-1">
-                      <input
-                        type="text"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="Search medicines, brands, or symptoms..."
-                        className="w-full py-2.5 px-4 rounded-lg text-gray-800 focus:outline-none text-sm"
-                      />
-                    </div>
-                    <button className="bg-green-700 hover:bg-green-800 text-white px-4 py-2.5 rounded-lg font-bold text-sm flex items-center justify-center gap-2 min-w-[100px]">
-                      <Search className="w-4 h-4" />
-                      Search
-                    </button>
-                  </div>
+                <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">{slide.title}</h1>
+                <p className="text-sm text-white/90 mb-3">{slide.subtitle}</p>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search medicines, brands..."
+                    className="flex-1 py-2 px-3 rounded-lg text-sm"
+                  />
+                  <button className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm">
+                    <Search className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         ))}
-
-        {/* Navigation Buttons */}
-        <button 
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all z-20"
-        >
-          ←
-        </button>
-        <button 
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all z-20"
-        >
-          →
-        </button>
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8">
+      <div className="container mx-auto px-3 py-6">
         {/* Mobile Filter Toggle */}
         <div className="lg:hidden mb-4">
           <button
             onClick={() => setShowMobileFilters(!showMobileFilters)}
-            className="flex items-center justify-between w-full p-3 bg-white rounded-lg shadow-sm border border-gray-200"
+            className="flex items-center justify-between w-full p-3 bg-white rounded-lg shadow-sm border border-blue-200"
           >
             <div className="flex items-center gap-2">
-              <Filter className="w-4 h-4" />
-              <span className="font-medium">Filters & Sort</span>
+              <Filter className="w-4 h-4 text-blue-600" />
+              <span className="font-medium text-blue-800">Filters & Sort</span>
             </div>
-            <ChevronDown className={`w-4 h-4 transition-transform ${showMobileFilters ? 'rotate-180' : ''}`} />
+            <ChevronDown className={`w-4 h-4 text-blue-600 transition-transform ${showMobileFilters ? 'rotate-180' : ''}`} />
           </button>
         </div>
 
-        {/* Category Filters - Green Yellow Theme */}
-        <div className={`${showMobileFilters ? 'block' : 'hidden lg:block'} mb-6 sm:mb-8`}>
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 sm:mb-6">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Browse Medicines</h2>
-              <p className="text-sm text-gray-600">Filter by category or health condition</p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-              {/* Sort By */}
-              <div className="relative w-full sm:w-auto">
-                <select 
+        {/* Filters Container - EXACTLY like injections page */}
+        <div className={`${showMobileFilters ? 'block' : 'hidden lg:block'} mb-6`}>
+          {/* Filter Header */}
+          <div className="bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4 mb-4">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+              {/* Heading */}
+              <h3 className="text-xl font-bold text-blue-900">
+                Browse <span className="text-yellow-500">Medicines</span>
+                <span className="block text-sm font-normal text-blue-700 mt-1">
+                  {filteredProducts.length} products found
+                </span>
+              </h3>
+
+              {/* Sort Dropdown */}
+              <div className="relative w-full sm:w-56">
+                <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 appearance-none"
+                  className="w-full appearance-none px-4 py-2 pr-10
+                             bg-white border border-blue-300 rounded-lg
+                             text-sm font-medium text-blue-900
+                             focus:outline-none focus:ring-2 focus:ring-yellow-400
+                             cursor-pointer"
                 >
-                  <option value="featured">Featured</option>
-                  <option value="price-low">Price: Low to High</option>
-                  <option value="price-high">Price: High to Low</option>
-                  <option value="rating">Highest Rating</option>
-                  <option value="newest">Newest</option>
+                  <option value="featured">⭐ Featured</option>
+                  <option value="price-low">⬇ Price: Low to High</option>
+                  <option value="price-high">⬆ Price: High to Low</option>
                 </select>
-                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
+                <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-blue-600">
+                  ▼
+                </span>
               </div>
+            </div>
 
-              {/* View Toggle */}
-              <div className="flex items-center gap-1 bg-green-50 p-1 rounded-lg">
-                <button
-                  onClick={() => setViewMode("grid")}
-                  className={`p-2 rounded-md transition-all text-sm ${
-                    viewMode === "grid" 
-                      ? "bg-green-600 text-white shadow-sm" 
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  Grid
-                </button>
-                <button
-                  onClick={() => setViewMode("list")}
-                  className={`p-2 rounded-md transition-all text-sm ${
-                    viewMode === "list" 
-                      ? "bg-green-600 text-white shadow-sm" 
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  List
-                </button>
+            {/* Category Buttons */}
+            <div className="mt-4">
+              <h3 className="text-sm font-bold text-blue-800 mb-2">Filter by Category:</h3>
+              <div className="flex flex-wrap gap-2">
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all ${
+                      selectedCategory === category.id
+                        ? 'bg-blue-600 text-white shadow-md'
+                        : 'bg-white text-blue-800 hover:bg-blue-100 border border-blue-300'
+                    }`}
+                  >
+                    {category.icon}
+                    <span className="text-xs font-medium">{category.label}</span>
+                  </button>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2 sm:gap-3">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  selectedCategory === category.id
-                    ? "bg-green-600 text-white shadow-sm"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                <span className="text-base">{category.icon}</span>
-                {category.name}
-              </button>
-            ))}
-          </div>
+          {/* Active Filters Display */}
+          {(selectedCategory !== "all" || searchQuery) && (
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-sm font-medium text-yellow-800">Active Filters:</span>
+                {selectedCategory !== "all" && (
+                  <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs">
+                    {categories.find(c => c.id === selectedCategory)?.label}
+                    <button 
+                      onClick={() => setSelectedCategory("all")}
+                      className="ml-1 text-blue-600 hover:text-blue-800"
+                    >
+                      ×
+                    </button>
+                  </span>
+                )}
+                {searchQuery && (
+                  <span className="inline-flex items-center gap-1 bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs">
+                    Search: "{searchQuery}"
+                    <button 
+                      onClick={() => setSearchQuery("")}
+                      className="ml-1 text-yellow-600 hover:text-yellow-800"
+                    >
+                      ×
+                    </button>
+                  </span>
+                )}
+                <button 
+                  onClick={() => {
+                    setSelectedCategory("all");
+                    setSearchQuery("");
+                  }}
+                  className="ml-auto text-xs text-blue-600 hover:text-blue-800 font-medium"
+                >
+                  Clear all filters
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Quick Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
           {[
-            { label: "Total Medicines", value: "5000+", icon: "💊", color: "bg-green-100 text-green-700" },
-            { label: "Trusted Brands", value: "50+", icon: "🏆", color: "bg-yellow-100 text-yellow-700" },
-            { label: "Cities Covered", value: "100+", icon: "📍", color: "bg-blue-100 text-blue-700" },
-            { label: "Happy Customers", value: "1L+", icon: "😊", color: "bg-purple-100 text-purple-700" }
+            { label: "Total Medicines", value: "5000+", icon: "💊", color: "bg-blue-100" },
+            { label: "Trusted Brands", value: "50+", icon: "🏆", color: "bg-yellow-100" },
+            { label: "Cities Covered", value: "100+", icon: "📍", color: "bg-green-100" },
+            { label: "Happy Customers", value: "1L+", icon: "😊", color: "bg-purple-100" }
           ].map((stat, index) => (
-            <div key={index} className="bg-white rounded-xl p-4 border border-gray-200 shadow-sm">
+            <div key={index} className="bg-white rounded-xl p-3 border border-gray-200">
               <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 ${stat.color.split(' ')[0]} rounded-lg flex items-center justify-center`}>
-                  <span className="text-lg">{stat.icon}</span>
+                <div className={`w-8 h-8 ${stat.color} rounded-lg flex items-center justify-center`}>
+                  <span className="text-base">{stat.icon}</span>
                 </div>
                 <div>
-                  <div className="text-xl sm:text-2xl font-bold text-gray-900">{stat.value}</div>
+                  <div className="text-lg font-bold text-gray-900">{stat.value}</div>
                   <div className="text-xs text-gray-600">{stat.label}</div>
                 </div>
               </div>
@@ -425,123 +401,199 @@ export default function MedicinesPage() {
           ))}
         </div>
 
-        {/* Products Grid/List */}
-        <div className="mb-8 sm:mb-12">
-          <div className={`${viewMode === "grid" 
-            ? "grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" 
-            : "space-y-4"
-          }`}>
-            {sortedMedicines.map((medicine) => (
-              <MedicineCard
-                key={medicine.id}
-                product={medicine}
-                type={viewMode}
-                onViewDetails={handleViewDetails}
-              />
-            ))}
-          </div>
+        {/* Products Grid - 2 Columns on Mobile */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <div 
+                key={product.id}
+                className="group bg-white rounded-lg border border-gray-200 overflow-hidden hover:border-blue-300 hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
+                onClick={() => setSelectedProduct(product)}
+              >
+                {/* Image */}
+                <div className="relative h-32 sm:h-40 md:h-48 overflow-hidden bg-gradient-to-br from-blue-50 to-white">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://via.placeholder.com/300x300?text=Medicine";
+                    }}
+                  />
+                  {/* Badges */}
+                  <div className="absolute top-2 right-2 flex flex-col gap-1">
+                    {product.isNew && <span className="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold animate-pulse">NEW</span>}
+                    {product.isHot && <span className="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold">HOT</span>}
+                    {product.prescription && <span className="bg-blue-600 text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold">RX</span>}
+                    {product.isSale && <span className="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold">SALE</span>}
+                  </div>
+                  {/* Stock */}
+                  {product.stock && (
+                    <div className="absolute bottom-2 left-2">
+                      <span className={`text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
+                        product.stock === "In Stock" 
+                          ? "bg-green-100 text-green-800 border border-green-300"
+                          : product.stock === "Limited Stock"
+                          ? "bg-yellow-100 text-yellow-800 border border-yellow-300"
+                          : "bg-red-100 text-red-800 border border-red-300"
+                      }`}>
+                        {product.stock}
+                      </span>
+                    </div>
+                  )}
+                </div>
 
-          {/* No Results */}
-          {sortedMedicines.length === 0 && (
-            <div className="text-center py-10 sm:py-12">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-green-50 rounded-full flex items-center justify-center">
-                <Pill className="w-8 h-8 sm:w-10 sm:h-10 text-green-400" />
+                {/* Content */}
+                <div className="p-2 sm:p-3">
+                  {/* Category */}
+                  <div className="mb-1">
+                    <span className="text-[10px] text-blue-600 font-medium uppercase">
+                      {product.type}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-xs sm:text-sm font-bold text-gray-900 mb-2 line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem] group-hover:text-blue-700 transition-colors">
+                    {product.name}
+                  </h3>
+
+                  {/* Brand */}
+                  <div className="mb-2">
+                    <span className="text-[10px] text-gray-500">by {product.brand}</span>
+                  </div>
+
+                  {/* Price */}
+                  <div className="flex items-baseline justify-between mb-3">
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-sm sm:text-base font-bold text-gray-900">
+                        ₹{product.price}
+                      </span>
+                      {product.discount && (
+                        <span className="text-[10px] text-gray-400 line-through">
+                          ₹{product.discount}
+                        </span>
+                      )}
+                    </div>
+                    {product.rating && (
+                      <div className="flex items-center gap-1">
+                        <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                        <span className="text-xs font-medium">{product.rating}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* View Button */}
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedProduct(product);
+                    }}
+                    className="w-full py-1.5 sm:py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-xs sm:text-sm font-medium rounded-lg transition-all duration-300 shadow-sm hover:shadow-md"
+                  >
+                    View Details
+                  </button>
+                </div>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-gray-700 mb-2">No medicines found</h3>
-              <p className="text-sm text-gray-600 max-w-md mx-auto px-4">
-                Try adjusting your filters or browse other categories
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-blue-100 to-blue-200 rounded-full flex items-center justify-center">
+                <Pill className="w-8 h-8 text-blue-500" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-700 mb-2">No medicines found</h3>
+              <p className="text-gray-600 mb-4 max-w-md mx-auto">
+                Try adjusting your filters or search for something else
               </p>
+              <button 
+                onClick={() => {
+                  setSelectedCategory("all");
+                  setSearchQuery("");
+                }}
+                className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-medium hover:shadow-lg transition-all"
+              >
+                Reset Filters
+              </button>
             </div>
           )}
         </div>
 
-        {/* Information Cards - Green Yellow Theme */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
-          {/* Storage Guide */}
-          <div className="bg-gradient-to-br from-green-50 to-white rounded-xl p-4 sm:p-6 border border-green-200 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-600 to-green-700 rounded-lg flex items-center justify-center">
-                <Home className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </div>
-              <div>
-                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">Storage Guidelines</h2>
-                <p className="text-sm text-green-600">Proper storage maintains medicine efficacy</p>
-              </div>
-            </div>
-            
-            <div className="space-y-3">
-              <div className="flex items-start gap-3 p-3 bg-white rounded-lg border border-green-200">
-                <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Thermometer className="w-4 h-4 text-green-600" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-800 mb-1 text-sm">Room Temperature</h4>
-                  <p className="text-gray-600 text-xs">• Store between 15-30°C</p>
-                  <p className="text-gray-600 text-xs">• Keep away from moisture</p>
-                  <p className="text-gray-600 text-xs">• Avoid bathroom storage</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-3 p-3 bg-white rounded-lg border border-green-200">
-                <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-800 mb-1 text-sm">General Tips</h4>
-                  <p className="text-gray-600 text-xs">• Keep in original packaging</p>
-                  <p className="text-gray-600 text-xs">• Check expiry dates regularly</p>
-                  <p className="text-gray-600 text-xs">• Store out of children's reach</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Safety Information */}
-          <div className="bg-gradient-to-br from-yellow-50 to-white rounded-xl p-4 sm:p-6 border border-yellow-200 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-yellow-600 to-yellow-500 rounded-lg flex items-center justify-center">
-                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </div>
-              <div>
-                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">Safety First</h2>
-                <p className="text-sm text-yellow-600">Important medication safety guidelines</p>
-              </div>
-            </div>
-            
-            <div className="space-y-2">
-              {[
-                "Take medicines as prescribed",
-                "Never share your medicines",
-                "Complete antibiotic courses",
-                "Check for drug interactions",
-                "Store away from children and pets",
-                "Don't use expired medicines"
-              ].map((item, index) => (
-                <div key={index} className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full flex-shrink-0 mt-1.5"></div>
-                  <span className="text-sm text-gray-700">{item}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Warning Box */}
-            <div className="mt-4 p-3 bg-yellow-100 border border-yellow-300 rounded-lg">
-              <div className="flex items-center gap-2 mb-1">
-                <AlertCircle className="w-4 h-4 text-yellow-700" />
-                <span className="font-bold text-yellow-800 text-sm">Important Notice</span>
-              </div>
-              <p className="text-xs text-yellow-700">
-                Prescription medicines should only be taken under medical supervision. 
-                Consult your doctor before starting any new medication.
+        {/* Safety Info */}
+        <div className="bg-yellow-50 border-2 border-yellow-300 rounded-xl p-4 mb-8">
+          <div className="flex items-start gap-3">
+            <Shield className="w-6 h-6 text-yellow-600 flex-shrink-0" />
+            <div>
+              <h3 className="font-bold text-yellow-800 text-lg mb-2">⚠️ Medicine Safety Guidelines</h3>
+              <p className="text-yellow-700 text-sm">
+                Prescription medicines should only be taken under medical supervision.
+                Consult your doctor before starting any new medication. Never self-medicate.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Popular Brands */}
-        <div className="mb-8 sm:mb-12">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Trusted Pharmaceutical Brands</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
+        {/* Info Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          {/* Storage Info */}
+          <div className="bg-white border border-blue-200 rounded-xl p-4">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Thermometer className="w-5 h-5 text-blue-600" />
+              </div>
+              <h3 className="font-bold text-gray-900">Storage Guidelines</h3>
+            </div>
+            <ul className="space-y-2">
+              <li className="flex items-center gap-2 text-sm text-gray-600">
+                <CheckCircle className="w-4 h-4 text-green-500" />
+                Store between 15-30°C
+              </li>
+              <li className="flex items-center gap-2 text-sm text-gray-600">
+                <CheckCircle className="w-4 h-4 text-green-500" />
+                Keep away from moisture
+              </li>
+              <li className="flex items-center gap-2 text-sm text-gray-600">
+                <CheckCircle className="w-4 h-4 text-green-500" />
+                Avoid bathroom storage
+              </li>
+              <li className="flex items-center gap-2 text-sm text-gray-600">
+                <CheckCircle className="w-4 h-4 text-green-500" />
+                Store out of children's reach
+              </li>
+            </ul>
+          </div>
+
+          {/* Usage Info */}
+          <div className="bg-white border border-green-200 rounded-xl p-4">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                <CheckCircle className="w-5 h-5 text-green-600" />
+              </div>
+              <h3 className="font-bold text-gray-900">Usage Guidelines</h3>
+            </div>
+            <ul className="space-y-2">
+              <li className="flex items-center gap-2 text-sm text-gray-600">
+                <CheckCircle className="w-4 h-4 text-green-500" />
+                Take medicines as prescribed
+              </li>
+              <li className="flex items-center gap-2 text-sm text-gray-600">
+                <CheckCircle className="w-4 h-4 text-green-500" />
+                Never share your medicines
+              </li>
+              <li className="flex items-center gap-2 text-sm text-gray-600">
+                <CheckCircle className="w-4 h-4 text-green-500" />
+                Complete antibiotic courses
+              </li>
+              <li className="flex items-center gap-2 text-sm text-gray-600">
+                <CheckCircle className="w-4 h-4 text-green-500" />
+                Check for drug interactions
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Brands */}
+        <div className="mb-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Trusted Pharmaceutical Brands</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
             {[
               { name: "Cipla", logo: "💊" },
               { name: "Sun Pharma", logo: "☀️" },
@@ -554,39 +606,187 @@ export default function MedicinesPage() {
               { name: "USV", logo: "💊" },
               { name: "Mankind", logo: "👨‍👩‍👧‍👦" }
             ].map((brand, index) => (
-              <div 
-                key={index} 
-                className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer"
+              <div
+                key={index}
+                className="bg-white border border-gray-200 rounded-xl p-3 text-center hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer"
               >
-                <div className="w-12 h-12 mx-auto mb-3 bg-green-50 rounded-full flex items-center justify-center text-xl">
+                <div className="w-10 h-10 mx-auto mb-2 bg-blue-50 rounded-full flex items-center justify-center text-lg">
                   {brand.logo}
                 </div>
-                <span className="font-medium text-gray-800">{brand.name}</span>
+                <span className="font-medium text-gray-800 text-sm">{brand.name}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* CTA Section - Green Yellow */}
-        <div className="bg-gradient-to-r from-green-700 to-green-800 rounded-xl p-4 sm:p-6 text-center text-white shadow-lg">
+        {/* Modal for Product Details - EXACTLY like injections page */}
+        {selectedProduct && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setSelectedProduct(null)}>
+            <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+              {/* Header */}
+              <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex justify-between items-center">
+                <div>
+                  <h2 className="text-lg font-bold">Product Details</h2>
+                  <p className="text-blue-100 text-sm">{selectedProduct.type}</p>
+                </div>
+                <button 
+                  onClick={() => setSelectedProduct(null)}
+                  className="p-2 hover:bg-white/20 rounded-full transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Content */}
+              <div className="p-4">
+                {/* Image */}
+                <div className="relative h-48 sm:h-64 mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-blue-50 to-white">
+                  <img 
+                    src={selectedProduct.image} 
+                    alt={selectedProduct.name} 
+                    className="w-full h-full object-contain p-4"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://via.placeholder.com/400x400?text=Medicine";
+                    }}
+                  />
+                </div>
+
+                {/* Info */}
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-1">{selectedProduct.name}</h3>
+                    {selectedProduct.brand && <p className="text-sm text-gray-600">by {selectedProduct.brand}</p>}
+                  </div>
+
+                  {/* Rating */}
+                  {selectedProduct.rating && (
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1">
+                        <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                        <span className="font-medium">{selectedProduct.rating}</span>
+                      </div>
+                      <span className="text-sm text-gray-500">({Math.floor(Math.random() * 100) + 50} reviews)</span>
+                    </div>
+                  )}
+
+                  {/* Price */}
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-2xl font-bold text-gray-900">
+                      ₹{selectedProduct.price}
+                    </span>
+                    {selectedProduct.discount && (
+                      <>
+                        <span className="text-lg text-gray-400 line-through">
+                          ₹{selectedProduct.discount}
+                        </span>
+                        <span className="text-xs bg-gradient-to-r from-green-500 to-green-600 text-white px-2 py-1 rounded font-bold">
+                          Save ₹{(selectedProduct.discount - selectedProduct.price)}
+                        </span>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Description */}
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-2">Description</h4>
+                    <p className="text-sm text-gray-700 leading-relaxed">{selectedProduct.description}</p>
+                  </div>
+
+                  {/* Details Grid */}
+                  <div className="grid grid-cols-2 gap-3 py-4 border-t border-b border-gray-200">
+                    {selectedProduct.dosage && (
+                      <div>
+                        <p className="text-xs text-gray-500 mb-1">Dosage</p>
+                        <p className="text-sm font-medium text-gray-900">{selectedProduct.dosage}</p>
+                      </div>
+                    )}
+                    {selectedProduct.storage && (
+                      <div>
+                        <p className="text-xs text-gray-500 mb-1">Storage</p>
+                        <p className="text-sm font-medium text-gray-900">{selectedProduct.storage}</p>
+                      </div>
+                    )}
+                    {selectedProduct.quantity && (
+                      <div>
+                        <p className="text-xs text-gray-500 mb-1">Package</p>
+                        <p className="text-sm font-medium text-gray-900">{selectedProduct.quantity}</p>
+                      </div>
+                    )}
+                    {selectedProduct.delivery && (
+                      <div>
+                        <p className="text-xs text-gray-500 mb-1">Delivery</p>
+                        <p className="text-sm font-medium text-gray-900 flex items-center gap-1">
+                          <Truck className="w-3 h-3 text-blue-600" />
+                          {selectedProduct.delivery}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Stock Status */}
+                  {selectedProduct.stock && (
+                    <div className={`px-3 py-2 rounded-lg ${
+                      selectedProduct.stock === "In Stock" 
+                        ? "bg-green-100 text-green-800"
+                        : selectedProduct.stock === "Limited Stock"
+                        ? "bg-yellow-100 text-yellow-800"
+                        : "bg-red-100 text-red-800"
+                    }`}>
+                      <span className="font-medium">{selectedProduct.stock}</span>
+                    </div>
+                  )}
+
+                  {/* Prescription Warning */}
+                  {selectedProduct.prescription && (
+                    <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-3">
+                      <div className="flex items-center gap-2">
+                        <AlertCircle className="w-4 h-4 text-yellow-600" />
+                        <span className="text-sm font-medium text-yellow-800">Prescription Required</span>
+                      </div>
+                      <p className="text-xs text-yellow-700 mt-1">
+                        This medicine requires a valid doctor's prescription. Consult your physician before use.
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Action Buttons */}
+                  <div className="flex gap-3 pt-2">
+                    <button 
+                      onClick={() => handleAddToCart(selectedProduct)}
+                      className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-lg transition-all hover:shadow-lg"
+                    >
+                      Add to Cart
+                    </button>
+                    <button className="px-4 py-3 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-bold rounded-lg transition-colors">
+                      <span className="text-lg">❤️</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* CTA Section */}
+        <div className="bg-gradient-to-r from-blue-700 to-blue-800 rounded-xl p-6 text-center text-white shadow-lg">
           <div className="inline-flex items-center gap-2 bg-yellow-500/20 backdrop-blur-sm px-3 py-1.5 rounded-full mb-4">
             <Phone className="w-3.5 h-3.5 text-yellow-400" />
-            <span className="text-xs sm:text-sm font-bold">24/7 Pharmacy Support</span>
+            <span className="text-sm font-bold">24/7 Pharmacy Support</span>
           </div>
           
-          <h2 className="text-lg sm:text-xl font-bold mb-3">Need Medical Advice?</h2>
-          <p className="text-sm sm:text-base mb-4 text-green-100 max-w-lg mx-auto">
-            Our licensed pharmacists are available 24/7 to help you with medicine information, 
+          <h2 className="text-xl font-bold mb-3">Need Medical Advice?</h2>
+          <p className="text-blue-100 mb-4 max-w-lg mx-auto">
+            Our licensed pharmacists are available 24/7 to help you with medicine information,
             dosage guidance, and health queries.
           </p>
-          <div className="flex flex-col xs:flex-row gap-3 justify-center">
-            <button className="bg-white text-green-700 hover:bg-gray-100 px-4 py-2.5 rounded-lg font-bold hover:scale-105 transition-all flex items-center justify-center gap-2 text-sm">
-              <span className="text-base">👨‍⚕️</span>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <button className="bg-white text-blue-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-bold hover:scale-105 transition-all flex items-center justify-center gap-2">
+              <span className="text-lg">👨‍⚕️</span>
               Consult Pharmacist
             </button>
-            <button className="bg-white/10 backdrop-blur-lg border-2 border-white/30 hover:bg-white/20 px-4 py-2.5 rounded-lg font-bold hover:scale-105 transition-all flex items-center justify-center gap-2 text-sm">
-              <Phone className="w-4 h-4" />
-              1800-123-4567
+            <button className="bg-white/10 backdrop-blur-lg border-2 border-white/30 hover:bg-white/20 px-6 py-3 rounded-lg font-bold hover:scale-105 transition-all flex items-center justify-center gap-2">
+              <Phone className="w-5 h-5" />
+              9903241021
             </button>
           </div>
         </div>

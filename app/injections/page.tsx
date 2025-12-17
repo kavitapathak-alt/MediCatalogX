@@ -1,78 +1,76 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Syringe, Shield, Thermometer, Snowflake, Home, Filter, Droplets, Pill, Heart, Clock, AlertCircle, ChevronDown, Search, Phone } from "lucide-react";
-import MedicineCard from "@/app/components/MedicineCard";
+import { Syringe, Shield, Thermometer, Snowflake, Home, Filter, Droplets, Pill, Heart, Clock, AlertCircle, ChevronDown, Search, Phone, X, Star, Truck } from "lucide-react";
 
 const injections = [
   {
-  id: 1,
-  name: "Novoseven",
-  type: "Recombinant Factor VIIa",
-  storage: "2-8°C",
-  price: 12795,
-  prescription: true,
-  image: "/images/injections/nevoseven.png",
-  description: "Novoseven (Eptacog alfa) is a recombinant Factor VIIa injection used to control bleeding episodes in patients with hemophilia A or B with inhibitors, congenital Factor VII deficiency, or Glanzmann’s thrombasthenia. It helps the blood clot quickly and is administered via intravenous injection.",
-  rating: 4.8,
-  brand: "Novo Nordisk",
-  dosage: "1 mg (50 KIU)",
-  quantity: "Injection vial with solvent",
-  discount: 13500,
-  isHot: true,
-  stock: "In Stock",
-  delivery: "24 hours"
-}
-  ,
- {
-  id: 2,
-  name: "Faslodex (Fulvestrant)",
-  type: "Oncology / Breast Cancer",
-  storage: "2-8°C",
-  price: 24800,
-  prescription: true,
-  image: "/images/injections/faslodex.png",
-  description: "Faslodex (Fulvestrant) is an estrogen receptor antagonist used for the treatment of hormone receptor-positive metastatic breast cancer in postmenopausal women who have progressed following antiestrogen therapy. It works by downregulating estrogen receptors and inhibiting estrogen signaling. Administered as a monthly intramuscular injection (two 5mL injections, one in each buttock). Must be stored refrigerated at 2-8°C and protected from light.",
-  rating: 4.5,
-  brand: "AstraZeneca",
-  dosage: "500 mg",
-  quantity: "Two 5mL pre-filled syringes",
-  isNew: true,
-  stock: "Limited Stock",
-  delivery: "48-72 hours"
-},
+    id: 1,
+    name: "Novoseven",
+    type: "Recombinant Factor VIIa",
+    storage: "2-8°C",
+    price: 12795,
+    prescription: true,
+    image: "https://th.bing.com/th/id/R.f819385736704d0e5650a4867661ca64?rik=g8ZKgxAO3tiQ3A&riu=http%3a%2f%2fegyptiandrugstore.com%2fimage%2fcache%2fdata%2fmanar%2fnovoseven-400x400.png&ehk=alPpd0bbohYAnM1%2b6Yl5mLvEucxPIZwYZxUCI2YrLH0%3d&risl=&pid=ImgRaw&r=0",
+    description: "Novoseven (Eptacog alfa) is a recombinant Factor VIIa injection used to control bleeding episodes in patients with hemophilia A or B with inhibitors, congenital Factor VII deficiency, or Glanzmann's thrombasthenia. It helps the blood clot quickly and is administered via intravenous injection.",
+    rating: 4.8,
+    brand: "Novo Nordisk",
+    dosage: "1 mg (50 KIU)",
+    quantity: "Injection vial with solvent",
+    discount: 13500,
+    isHot: true,
+    stock: "In Stock",
+    delivery: "24 hours"
+  },
   {
-  id: 3,
-  name: "Alimta (Pemetrexed)",
-  type: "Oncology / Chemotherapy",
-  storage: "2-8°C",
-  price: 18500,
-  prescription: true,
-  image: "/images/injections/alimta.png",
-  description: "Alimta (Pemetrexed) is a multi-targeted antifolate chemotherapy agent used for the treatment of malignant pleural mesothelioma and non-small cell lung cancer (NSCLC). It works by inhibiting multiple folate-dependent enzymes involved in purine and pyrimidine synthesis, thereby disrupting cancer cell replication. Administered via intravenous infusion after reconstitution with 0.9% sodium chloride. Requires pre-medication with folic acid, vitamin B12, and dexamethasone to reduce toxicity.",
-  rating: 4.4,
-  brand: "Eli Lilly",
-  dosage: "500 mg/m²",
-  quantity: "1 vial (500 mg)",
-  stock: "In Stock",
-  delivery: "24-48 hours"
-},
+    id: 2,
+    name: "Faslodex (Fulvestrant)",
+    type: "Oncology / Breast Cancer",
+    storage: "2-8°C",
+    price: 24800,
+    prescription: true,
+    image: "https://5.imimg.com/data5/SELLER/Default/2024/4/408657614/QN/XB/WR/10526113/faslodex-injection-500x500.jpg",
+    description: "Faslodex (Fulvestrant) is an estrogen receptor antagonist used for the treatment of hormone receptor-positive metastatic breast cancer in postmenopausal women who have progressed following antiestrogen therapy.",
+    rating: 4.5,
+    brand: "AstraZeneca",
+    dosage: "500 mg",
+    quantity: "Two 5mL pre-filled syringes",
+    isNew: true,
+    stock: "Limited Stock",
+    delivery: "48-72 hours"
+  },
   {
-  id: 4,
-  name: "Cyramza (Ramucirumab)",
-  type: "Oncology / Targeted Therapy",
-  storage: "2-8°C",
-  price: 42500,
-  prescription: true,
-  image: "/images/injections/cyramza.png",
-  description: "Cyramza (Ramucirumab) is a monoclonal antibody that specifically binds to VEGFR-2 (Vascular Endothelial Growth Factor Receptor-2), blocking the binding of VEGF ligands and inhibiting angiogenesis. It is indicated for the treatment of advanced or metastatic gastric cancer, non-small cell lung cancer, colorectal cancer, and hepatocellular carcinoma, either as monotherapy or in combination with other chemotherapeutic agents. Administered as an intravenous infusion every 2-3 weeks. Storage requires refrigeration at 2-8°C and protection from light.",
-  rating: 4.3,
-  brand: "Eli Lilly",
-  dosage: "8 mg/kg",
-  quantity: "1 vial (100 mg/10 mL or 500 mg/50 mL)",
-  stock: "In Stock",
-  delivery: "48-72 hours"
-},
+    id: 3,
+    name: "Alimta (Pemetrexed)",
+    type: "Oncology / Chemotherapy",
+    storage: "2-8°C",
+    price: 18500,
+    prescription: true,
+    image: "https://tse1.mm.bing.net/th/id/OIP.T5Bz7GBkQ21_YobF5ppfSgHaHa?cb=ucfimg2&pid=ImgDet&ucfimg=1&w=187&h=187&c=7&dpr=1.3&o=7&rm=3",
+    description: "Alimta (Pemetrexed) is a multi-targeted antifolate chemotherapy agent used for the treatment of malignant pleural mesothelioma and non-small cell lung cancer (NSCLC).",
+    rating: 4.4,
+    brand: "Eli Lilly",
+    dosage: "500 mg/m²",
+    quantity: "1 vial (500 mg)",
+    stock: "In Stock",
+    delivery: "24-48 hours"
+  },
+  {
+    id: 4,
+    name: "Cyramza (Ramucirumab)",
+    type: "Oncology / Targeted Therapy",
+    storage: "2-8°C",
+    price: 42500,
+    prescription: true,
+    image: "https://tse3.mm.bing.net/th/id/OIP.Wnp7ihzSG2dnQax_5096MgHaHW?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    description: "Cyramza (Ramucirumab) is a monoclonal antibody that specifically binds to VEGFR-2, blocking the binding of VEGF ligands and inhibiting angiogenesis.",
+    rating: 4.3,
+    brand: "Eli Lilly",
+    dosage: "8 mg/kg",
+    quantity: "1 vial (100 mg/10 mL or 500 mg/50 mL)",
+    stock: "In Stock",
+    delivery: "48-72 hours"
+  },
   {
     id: 5,
     name: "Ozempic 0.25 mg",
@@ -80,7 +78,7 @@ const injections = [
     storage: "2-8°C",
     price: 3200,
     prescription: true,
-    image: "/images/injections/ozempic-025.jpg",
+    image: "https://th.bing.com/th/id/OIP.ChVAJ5AZJ43pOAB9eZxkRAHaHa?w=177&h=180&c=7&r=0&o=7&cb=ucfimg2&dpr=1.3&pid=1.7&rm=3&ucfimg=1",
     description: "A once-weekly Semaglutide injection used for blood sugar control and weight management. Requires refrigeration.",
     rating: 4.8,
     brand: "Novo Nordisk",
@@ -97,7 +95,7 @@ const injections = [
     storage: "2-8°C",
     price: 3400,
     prescription: true,
-    image: "/images/injections/ozempic-05.jpg",
+    image: "https://tse1.mm.bing.net/th/id/OIP.M9VrUcTdJAqftaplawJ_5gAAAA?cb=ucfimg2&pid=ImgDet&ucfimg=1&w=184&h=153&c=7&dpr=1.3&o=7&rm=3",
     description: "Higher-dose Semaglutide injection for diabetes and metabolic improvement. Must be kept in 2–8°C cold chain.",
     rating: 4.6,
     brand: "Novo Nordisk",
@@ -113,7 +111,7 @@ const injections = [
     storage: "2-8°C",
     price: 18500,
     prescription: true,
-    image: "/images/injections/mabthera.jpg",
+    image: "https://tse3.mm.bing.net/th/id/OIP.WYnZdRBtC4zghv0QW_fqBgHaFz?cb=ucfimg2&pid=ImgDet&ucfimg=1&w=187&h=146&c=7&dpr=1.3&o=7&rm=3",
     description: "A monoclonal antibody for lymphoma, leukemia, and rheumatoid arthritis. Hospital-use IV infusion medicine.",
     rating: 4.4,
     brand: "Roche",
@@ -130,7 +128,7 @@ const injections = [
     storage: "2-8°C",
     price: 92000,
     prescription: true,
-    image: "/images/injections/opdivo.jpg",
+    image: "https://tse1.mm.bing.net/th/id/OIP.BBkdd0rX-EMuPxMh_qD4uwHaHa?cb=ucfimg2&pid=ImgDet&ucfimg=1&w=187&h=187&c=7&dpr=1.3&o=7&rm=3",
     description: "A high-grade PD-1 checkpoint inhibitor used for advanced cancers. Must be refrigerated and administered in hospital settings.",
     rating: 4.9,
     brand: "Bristol-Myers Squibb",
@@ -140,172 +138,159 @@ const injections = [
     delivery: "72 hours"
   },
   {
-  id: 9,
-  name: "Avastin (Bevacizumab)",
-  type: "Oncology / Targeted Therapy",
-  storage: "2-8°C",
-  price: 38500,
-  prescription: true,
-  image: "/images/injections/avastin.png",
-  description: "Avastin (Bevacizumab) is a recombinant humanized monoclonal antibody that inhibits angiogenesis by targeting Vascular Endothelial Growth Factor (VEGF). It is used for the treatment of various cancers including colorectal cancer, non-small cell lung cancer, glioblastoma, renal cell carcinoma, cervical cancer, and ovarian cancer. By binding to VEGF, it prevents the formation of new blood vessels that tumors need to grow. Administered as an intravenous infusion every 2-3 weeks. Must be stored refrigerated at 2-8°C and protected from light.",
-  rating: 4.6,
-  brand: "Genentech/Roche",
-  dosage: "5-15 mg/kg",
-  quantity: "1 vial (100 mg/4 mL or 400 mg/16 mL)",
-  isNew: true,
-  stock: "In Stock",
-  delivery: "24-48 hours"
-},
-{
-  id: 10,
-  name: "Tremfya (Guselkumab)",
-  type: "Immunology / Biologic",
-  storage: "2-8°C",
-  price: 28500,
-  prescription: true,
-  image: "/images/injections/tremfya.png",
-  description: "Tremfya (Guselkumab) is a human monoclonal antibody that selectively targets interleukin-23 (IL-23), a key cytokine involved in inflammatory processes. It is indicated for the treatment of moderate to severe plaque psoriasis and active psoriatic arthritis in adults. By inhibiting IL-23, Tremfya reduces inflammation and improves skin and joint symptoms. Administered as a subcutaneous injection with an initial loading dose at weeks 0 and 4, followed by maintenance dosing every 8 weeks. Must be stored refrigerated at 2-8°C and protected from light; can be kept at room temperature for up to 30 days.",
-  rating: 4.7,
-  brand: "Janssen",
-  dosage: "100 mg",
-  quantity: "1 pre-filled syringe (100 mg/mL)",
-  stock: "In Stock",
-  delivery: "24-48 hours"
-},
-{
-  id: 11,
-  name: "Zoladex (Goserelin Acetate)",
-  type: "Oncology / Hormone Therapy",
-  storage: "Room Temp (below 25°C)",
-  price: 16200,
-  prescription: true,
-  image: "/images/injections/zaladexla.png",
-  description: "Zoladex (Goserelin Acetate) is a gonadotropin-releasing hormone (GnRH) agonist used for the treatment of prostate cancer, breast cancer, endometriosis, and certain benign gynecological disorders. It works by initially stimulating then suppressing pituitary gonadotropin secretion, leading to reduced production of sex hormones (testosterone or estrogen). Administered as a subcutaneous implant via pre-filled syringe into the anterior abdominal wall, providing sustained release over 1 month (3.6 mg) or 3 months (10.8 mg). Store at room temperature below 25°C, protected from light and moisture.",
-  rating: 4.4,
-  brand: "AstraZeneca",
-  dosage: "3.6 mg (1-month) or 10.8 mg (3-month)",
-  quantity: "1 pre-filled syringe with SafeSystem™ needle",
-  isSale: true,
-  discount: 17500,
-  stock: "In Stock",
-  delivery: "24 hours"
-},
-{
-  id: 12,
-  name: "Yervoy (Ipilimumab)",
-  type: "Oncology / Immunotherapy",
-  storage: "2-8°C",
-  price: 98500,
-  prescription: true,
-  image: "/images/injections/yervoy.png",
-  description: "Yervoy (Ipilimumab) is a monoclonal antibody that blocks cytotoxic T-lymphocyte-associated antigen 4 (CTLA-4), enhancing the immune system's ability to recognize and attack cancer cells. It is indicated for the treatment of advanced melanoma, renal cell carcinoma, colorectal cancer with MSI-H/dMMR, hepatocellular carcinoma, and non-small cell lung cancer, often in combination with nivolumab (Opdivo). Administered as an intravenous infusion over 90 minutes. Requires refrigeration at 2-8°C and protection from light. Due to its mechanism of immune activation, Yervoy can cause serious immune-mediated adverse reactions affecting various organs.",
-  rating: 4.8,
-  brand: "Bristol-Myers Squibb",
-  dosage: "1-3 mg/kg",
-  quantity: "1 vial (50 mg/10 mL or 200 mg/40 mL)",
-  isHot: true,
-  stock: "Limited Stock",
-  delivery: "72-96 hours"
-},
-{
-  id: 13,
-  name: "Cefoma-S (Cefoperazone + Sulbactam)",
-  type: "Antibiotic",
-  storage: "Room Temp (below 25°C)",
-  price: 450,
-  prescription: true,
-  image: "/images/injections/cefoma-s-1gm.png",
-  description: "Cefoma-S is a combination injectable antibiotic containing Cefoperazone (third-generation cephalosporin) and Sulbactam (beta-lactamase inhibitor). It is indicated for the treatment of moderate to severe infections caused by susceptible organisms, including respiratory tract infections, urinary tract infections, intra-abdominal infections, skin and soft tissue infections, and sepsis. Sulbactam extends the antibacterial spectrum by inhibiting beta-lactamase enzymes that would otherwise inactivate Cefoperazone. Administered via intravenous or intramuscular injection. Reconstituted solution should be used immediately and any unused portion discarded. Store vials at room temperature, protected from light and moisture.",
-  rating: 4.5,
-  brand: "Macleods",
-  dosage: "1 g (Cefoperazone 0.5g + Sulbactam 0.5g)",
-  quantity: "1 vial with diluent",
-  stock: "In Stock",
-  delivery: "Same day"
-},
-{
-  id: 14,
-  name: "Suruvanta (Beractant)",
-  type: "Neonatal / Respiratory",
-  storage: "2-8°C",
-  price: 12500,
-  prescription: true,
-  image: "/images/injections/suruvantaberactant.png",
-  description: "Suruvanta (Beractant) is a natural bovine lung surfactant extract used for the prevention and treatment of Respiratory Distress Syndrome (RDS) in premature infants. It contains phospholipids, neutral lipids, fatty acids, and surfactant-associated proteins that reduce surface tension in the alveoli, preventing collapse and improving lung compliance. Indicated for premature infants with clinical evidence of RDS or those at high risk of developing RDS. Administered via endotracheal tube as a sterile suspension in four divided doses. Must be stored refrigerated at 2-8°C and protected from light; do not freeze. Unopened vials may be warmed to room temperature before administration.",
-  rating: 4.9,
-  brand: "Lyomark",
-  dosage: "100 mg phospholipids/mL (4 mL per dose)",
-  quantity: "1 vial (8 mL)",
-  stock: "In Stock",
-  delivery: "24 hours"
-},
-{
-  id: 15,
-  name: "Paracetamol Infusion",
-  type: "Analgesic / Antipyretic",
-  storage: "Room Temp (below 30°C)",
-  price: 85,
-  prescription: true,
-  image: "/images/injections/paracetamolinfusionip.png",
-  description: "Paracetamol (Acetaminophen) Infusion is a non-opioid analgesic and antipyretic used for the management of mild to moderate pain and reduction of fever when oral administration is not possible. It works by inhibiting prostaglandin synthesis in the central nervous system. Indicated for postoperative pain, dental pain, headache, musculoskeletal pain, and febrile conditions. Administered as an intravenous infusion over 15 minutes. Available in various strengths (100 mg/mL, 500 mg/50 mL, 1 g/100 mL). Store at room temperature protected from light; do not freeze. Compatible with most IV fluids including 0.9% sodium chloride, 5% dextrose, and Ringer's lactate.",
-  rating: 4.6,
-  brand: "Multiple Brands",
-  dosage: "Adults: 1 g every 4-6 hours (max 4 g/day)",
-  quantity: "1 vial/bag (100 mL containing 1 g)",
-  stock: "In Stock",
-  delivery: "Same day"
-},
-{
-  id: 16,
-  name: "Biphasic Isophane Insulin Injection",
-  type: "Anti-diabetic",
-  storage: "2-8°C (unopened), Room Temp (in use: up to 28 days)",
-  price: 480,
-  prescription: true,
-  image: "/images/injections/biphasicisophaneinsulininjectionip.png",
-  description: "Biphasic Isophane Insulin (Human Insulin 30/70) is a premixed insulin formulation containing 30% soluble insulin (rapid-acting) and 70% isophane insulin (intermediate-acting). It is indicated for the management of type 1 and type 2 diabetes mellitus, providing both prandial glucose control and basal insulin coverage. The soluble insulin component acts within 30 minutes to control post-meal glucose spikes, while the isophane component provides sustained action for up to 24 hours. Administered subcutaneously, typically twice daily before breakfast and dinner. Unopened vials must be refrigerated at 2-8°C; in-use vials can be kept at room temperature (below 25°C) for up to 28 days. Do not freeze or expose to direct heat/light.",
-  rating: 4.7,
-  brand: "Biocon, Wockhardt, etc.",
-  dosage: "Individualized (typically 0.3-1.0 units/kg/day)",
-  quantity: "1 vial (10 mL, 100 IU/mL)",
-  stock: "In Stock",
-  delivery: "Same day"
-}
+    id: 9,
+    name: "Avastin (Bevacizumab)",
+    type: "Oncology / Targeted Therapy",
+    storage: "2-8°C",
+    price: 38500,
+    prescription: true,
+    image: "https://tse3.mm.bing.net/th/id/OIP.pFY0DGfsUKebw6heSiq7WwAAAA?cb=ucfimg2&pid=ImgDet&ucfimg=1&w=187&h=143&c=7&dpr=1.3&o=7&rm=3",
+    description: "Avastin (Bevacizumab) is a recombinant humanized monoclonal antibody that inhibits angiogenesis by targeting Vascular Endothelial Growth Factor (VEGF).",
+    rating: 4.6,
+    brand: "Genentech/Roche",
+    dosage: "5-15 mg/kg",
+    quantity: "1 vial (100 mg/4 mL or 400 mg/16 mL)",
+    isNew: true,
+    stock: "In Stock",
+    delivery: "24-48 hours"
+  },
+  {
+    id: 10,
+    name: "Tremfya (Guselkumab)",
+    type: "Immunology / Biologic",
+    storage: "2-8°C",
+    price: 28500,
+    prescription: true,
+    image: "https://tse4.mm.bing.net/th/id/OIP.FwPIPC_T21l5ubSSsigZJQHaGt?cb=ucfimg2&pid=ImgDet&ucfimg=1&w=184&h=166&c=7&dpr=1.3&o=7&rm=3",
+    description: "Tremfya (Guselkumab) is a human monoclonal antibody that selectively targets interleukin-23 (IL-23), a key cytokine involved in inflammatory processes.",
+    rating: 4.7,
+    brand: "Janssen",
+    dosage: "100 mg",
+    quantity: "1 pre-filled syringe (100 mg/mL)",
+    stock: "In Stock",
+    delivery: "24-48 hours"
+  },
+  {
+    id: 11,
+    name: "Zoladex (Goserelin Acetate)",
+    type: "Oncology / Hormone Therapy",
+    storage: "Room Temp (below 25°C)",
+    price: 16200,
+    prescription: true,
+    image: "https://5.imimg.com/data5/SELLER/Default/2023/2/LX/AD/RL/67230705/zoladex-injection-goserelin-acetate-500x500.jpeg",
+    description: "Zoladex (Goserelin Acetate) is a gonadotropin-releasing hormone (GnRH) agonist used for the treatment of prostate cancer, breast cancer, endometriosis.",
+    rating: 4.4,
+    brand: "AstraZeneca",
+    dosage: "3.6 mg (1-month) or 10.8 mg (3-month)",
+    quantity: "1 pre-filled syringe with SafeSystem™ needle",
+    isSale: true,
+    discount: 17500,
+    stock: "In Stock",
+    delivery: "24 hours"
+  },
+  {
+    id: 12,
+    name: "Yervoy (Ipilimumab)",
+    type: "Oncology / Immunotherapy",
+    storage: "2-8°C",
+    price: 98500,
+    prescription: true,
+    image: "https://tse4.mm.bing.net/th/id/OIP.40ypQWZ0psmjipxgoYKTRwHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    description: "Yervoy (Ipilimumab) is a monoclonal antibody that blocks cytotoxic T-lymphocyte-associated antigen 4 (CTLA-4), enhancing the immune system's ability to recognize and attack cancer cells.",
+    rating: 4.8,
+    brand: "Bristol-Myers Squibb",
+    dosage: "1-3 mg/kg",
+    quantity: "1 vial (50 mg/10 mL or 200 mg/40 mL)",
+    isHot: true,
+    stock: "Limited Stock",
+    delivery: "72-96 hours"
+  },
+  {
+    id: 13,
+    name: "Cefoma-S (Cefoperazone + Sulbactam)",
+    type: "Antibiotic",
+    storage: "Room Temp (below 25°C)",
+    price: 450,
+    prescription: true,
+    image: "https://5.imimg.com/data5/SELLER/Default/2022/2/CZ/HP/OA/13087301/cefoperazone-1000mg-sulbactam-500mg-1000x1000.jpg",
+    description: "Cefoma-S is a combination injectable antibiotic containing Cefoperazone and Sulbactam for treating moderate to severe infections.",
+    rating: 4.5,
+    brand: "Macleods",
+    dosage: "1 g (Cefoperazone 0.5g + Sulbactam 0.5g)",
+    quantity: "1 vial with diluent",
+    stock: "In Stock",
+    delivery: "Same day"
+  },
+  {
+    id: 14,
+    name: "Suruvanta (Beractant)",
+    type: "Neonatal / Respiratory",
+    storage: "2-8°C",
+    price: 12500,
+    prescription: true,
+    image: "https://tse2.mm.bing.net/th/id/OIP.V13WGvVyiqUlWFOHESWxMAAAAA?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    description: "Suruvanta (Beractant) is a natural bovine lung surfactant extract used for the prevention and treatment of Respiratory Distress Syndrome (RDS) in premature infants.",
+    rating: 4.9,
+    brand: "Lyomark",
+    dosage: "100 mg phospholipids/mL (4 mL per dose)",
+    quantity: "1 vial (8 mL)",
+    stock: "In Stock",
+    delivery: "24 hours"
+  },
+  {
+    id: 15,
+    name: "Paracetamol Infusion",
+    type: "Analgesic / Antipyretic",
+    storage: "Room Temp (below 30°C)",
+    price: 85,
+    prescription: true,
+    image: "https://5.imimg.com/data5/SELLER/Default/2023/4/303127563/WO/AI/OG/182944038/paracetamol-1000mg-intravenous-infusion-500x500.jpg",
+    description: "Paracetamol (Acetaminophen) Infusion is a non-opioid analgesic and antipyretic used for the management of mild to moderate pain and reduction of fever.",
+    rating: 4.6,
+    brand: "Multiple Brands",
+    dosage: "Adults: 1 g every 4-6 hours (max 4 g/day)",
+    quantity: "1 vial/bag (100 mL containing 1 g)",
+    stock: "In Stock",
+    delivery: "Same day"
+  },
+  {
+    id: 16,
+    name: "Biphasic Isophane Insulin Injection",
+    type: "Anti-diabetic",
+    storage: "2-8°C (unopened)",
+    price: 480,
+    prescription: true,
+    image: "https://tse3.mm.bing.net/th/id/OIP.RVUws3MDk9ttNlZMLfNC2gHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    description: "Biphasic Isophane Insulin (Human Insulin 30/70) is a premixed insulin formulation containing 30% soluble insulin and 70% isophane insulin.",
+    rating: 4.7,
+    brand: "Biocon, Wockhardt",
+    dosage: "Individualized (typically 0.3-1.0 units/kg/day)",
+    quantity: "1 vial (10 mL, 100 IU/mL)",
+    stock: "In Stock",
+    delivery: "Same day"
+  }
 ];
-
 
 const heroSlides = [
   {
     title: "Premium Injectable Medicines",
     subtitle: "Cold Chain Storage • Certified Quality • 24/7 Support",
-    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1200&q=80"
+    image: "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=1200&q=80"
   },
   {
     title: "Diabetes Care Solutions",
     subtitle: "Insulin Pens • GLP-1 Agonists • Expert Guidance",
-    image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    title: "Cancer Treatment Injections",
-    subtitle: "Chemotherapy • Immunotherapy • Targeted Therapy",
-    image: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    title: "Professional Biologics",
-    subtitle: "Refrigerated Storage • Quality Assured • Fast Delivery",
-    image: "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=1200&q=80"
+    image: "https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=1200&q=80"
   }
 ];
-
 export default function InjectionsPage() {
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [sortBy, setSortBy] = useState<string>("featured");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [sortBy, setSortBy] = useState("featured");
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState<typeof injections[number] | null>(null);
 
-  // Auto slide every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
@@ -313,303 +298,451 @@ export default function InjectionsPage() {
     return () => clearInterval(interval);
   }, []);
 
-  
-  const filteredInjections = selectedCategory === "all" 
-    ? injections 
-    : injections.filter(inj => {
-        if (selectedCategory === "diabetes") return inj.name.toLowerCase().includes("insulin") || inj.type.includes("Anti-diabetic");
-        if (selectedCategory === "oncology") return inj.type.includes("Oncology");
-        if (selectedCategory === "biologics") return inj.type.includes("Biologic") || inj.type.includes("Immunology");
-        if (selectedCategory === "antibiotics") return inj.type === "Antibiotic";
-        if (selectedCategory === "analgesics") return inj.name.toLowerCase().includes("paracetamol");
-        if (selectedCategory === "vitamins") return inj.type === "Supplement";
-        return true;
-      });
+  // Filter logic - FIXED
+  const filteredInjections = injections
+    .filter(inj => {
+      // Search filter
+      if (searchQuery) {
+        const searchLower = searchQuery.toLowerCase();
+        const matchesSearch = 
+          inj.name.toLowerCase().includes(searchLower) ||
+          inj.type.toLowerCase().includes(searchLower) ||
+          inj.brand?.toLowerCase().includes(searchLower) ||
+          inj.description.toLowerCase().includes(searchLower);
+        if (!matchesSearch) return false;
+      }
+      
+      // Category filter - FIXED
+      if (selectedCategory !== "all") {
+        switch(selectedCategory) {
+          case "diabetes":
+            return inj.type.includes("Anti-diabetic") || inj.name.toLowerCase().includes("insulin");
+          case "oncology":
+            return inj.type.includes("Oncology");
+          case "biologics":
+            return inj.type.includes("Biologic") || inj.type.includes("Immunology");
+          case "antibiotics":
+            return inj.type === "Antibiotic";
+          case "analgesics":
+            return inj.type.includes("Analgesic") || inj.name.toLowerCase().includes("paracetamol");
+          default:
+            return true;
+        }
+      }
+      
+      return true;
+    })
+    .sort((a, b) => {
+      switch(sortBy) {
+        case "price-low":
+          return a.price - b.price;
+        case "price-high":
+          return b.price - a.price;
+        default:
+          return 0; // featured order
+      }
+    });
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
-  };
-
-  const handleViewDetails = (id: number) => {
-    console.log("View details for medicine ID:", id);
-  };
+  const categories = [
+    { id: "all", label: "All Products", icon: <Pill className="w-4 h-4" /> },
+    { id: "diabetes", label: "Diabetes", icon: <Droplets className="w-4 h-4" /> },
+    { id: "oncology", label: "Oncology", icon: <AlertCircle className="w-4 h-4" /> },
+    { id: "biologics", label: "Biologics", icon: <Syringe className="w-4 h-4" /> },
+    { id: "antibiotics", label: "Antibiotics", icon: <Shield className="w-4 h-4" /> },
+    { id: "analgesics", label: "Analgesics", icon: <Thermometer className="w-4 h-4" /> }
+  ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Carousel - FIXED FOR MOBILE */}
-      <div className="relative h-[50vh] sm:h-[55vh] md:h-[60vh] overflow-hidden">
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero */}
+      <div className="relative h-[40vh] sm:h-[50vh] overflow-hidden">
         {heroSlides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-500 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+            className={`absolute inset-0 transition-opacity duration-500 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
           >
-            {/* Background Image */}
-            <img 
-              src={slide.image} 
-              alt=""
-              className="w-full h-full object-cover"
-            />
-
-            {/* Blue Overlay */}
+            <img src={slide.image} alt="" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-blue-800/60 to-transparent"></div>
-
-            {/* Content - MOBILE FRIENDLY */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8">
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
               <div className="max-w-4xl mx-auto">
-                {/* Badge - SMALL ON MOBILE */}
-                <div className="inline-flex items-center gap-1 bg-yellow-500 px-2 py-1 rounded-full mb-3 max-w-max">
+                <div className="inline-flex items-center gap-1 bg-yellow-500 px-2 py-1 rounded-full mb-2">
                   <Syringe className="w-3 h-3 text-white" />
                   <span className="text-xs font-bold text-white">Injectable Pharmacy</span>
                 </div>
+                <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">{slide.title}</h1>
+                <p className="text-sm text-white/90 mb-3">{slide.subtitle}</p>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search injections..."
+                    className="flex-1 py-2 px-3 rounded-lg text-sm"
+                  />
+                  <button className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm">
+                    <Search className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
 
-                {/* Title - RESPONSIVE TEXT */}
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 leading-tight">
-                  {slide.title}
-                </h1>
-                
-                {/* Subtitle - SMALLER ON MOBILE */}
-                <p className="text-sm sm:text-base text-white/90 mb-4 max-w-md">
-                  {slide.subtitle}
-                </p>
-                
-                {/* Search Bar - COMPACT ON MOBILE */}
-                <div className="max-w-md">
-                  <div className="flex flex-col sm:flex-row gap-2">
-                    <div className="flex-1">
-                      <input
-                        type="text"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="Search injections..."
-                        className="w-full py-2.5 px-4 rounded-lg text-gray-800 focus:outline-none text-sm"
-                      />
+      {/* Main Content */}
+      <div className="container mx-auto px-3 py-6">
+        {/* Mobile Filter Toggle */}
+        <div className="lg:hidden mb-4">
+          <button
+            onClick={() => setShowMobileFilters(!showMobileFilters)}
+            className="flex items-center justify-between w-full p-3 bg-white rounded-lg shadow-sm border border-blue-200"
+          >
+            <div className="flex items-center gap-2">
+              <Filter className="w-4 h-4 text-blue-600" />
+              <span className="font-medium text-blue-800">Filters & Sort</span>
+            </div>
+            <ChevronDown className={`w-4 h-4 text-blue-600 transition-transform ${showMobileFilters ? 'rotate-180' : ''}`} />
+          </button>
+        </div>
+
+        {/* Filters Container - FIXED with Category Buttons */}
+        <div className={`${showMobileFilters ? 'block' : 'hidden lg:block'} mb-6`}>
+          {/* Filter Header */}
+          <div className="bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4 mb-4">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+              {/* Heading */}
+              <h3 className="text-xl font-bold text-blue-900">
+                Browse <span className="text-yellow-500">Injections</span>
+                <span className="block text-sm font-normal text-blue-700 mt-1">
+                  {filteredInjections.length} products found
+                </span>
+              </h3>
+
+              {/* Sort Dropdown */}
+              <div className="relative w-full sm:w-56">
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="w-full appearance-none px-4 py-2 pr-10
+                             bg-white border border-blue-300 rounded-lg
+                             text-sm font-medium text-blue-900
+                             focus:outline-none focus:ring-2 focus:ring-yellow-400
+                             cursor-pointer"
+                >
+                  <option value="featured">⭐ Featured</option>
+                  <option value="price-low">⬇ Price: Low to High</option>
+                  <option value="price-high">⬆ Price: High to Low</option>
+                </select>
+                <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-blue-600">
+                  ▼
+                </span>
+              </div>
+            </div>
+
+            {/* Category Buttons - FIXED */}
+            <div className="mt-4">
+              <h3 className="text-sm font-bold text-blue-800 mb-2">Filter by Category:</h3>
+              <div className="flex flex-wrap gap-2">
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all ${
+                      selectedCategory === category.id
+                        ? 'bg-blue-600 text-white shadow-md'
+                        : 'bg-white text-blue-800 hover:bg-blue-100 border border-blue-300'
+                    }`}
+                  >
+                    {category.icon}
+                    <span className="text-xs font-medium">{category.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Active Filters Display */}
+          {(selectedCategory !== "all" || searchQuery) && (
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-sm font-medium text-yellow-800">Active Filters:</span>
+                {selectedCategory !== "all" && (
+                  <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs">
+                    {categories.find(c => c.id === selectedCategory)?.label}
+                    <button 
+                      onClick={() => setSelectedCategory("all")}
+                      className="ml-1 text-blue-600 hover:text-blue-800"
+                    >
+                      ×
+                    </button>
+                  </span>
+                )}
+                {searchQuery && (
+                  <span className="inline-flex items-center gap-1 bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs">
+                    Search: "{searchQuery}"
+                    <button 
+                      onClick={() => setSearchQuery("")}
+                      className="ml-1 text-yellow-600 hover:text-yellow-800"
+                    >
+                      ×
+                    </button>
+                  </span>
+                )}
+                <button 
+                  onClick={() => {
+                    setSelectedCategory("all");
+                    setSearchQuery("");
+                  }}
+                  className="ml-auto text-xs text-blue-600 hover:text-blue-800 font-medium"
+                >
+                  Clear all filters
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Products Grid - 2 Columns on Mobile */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
+          {filteredInjections.length > 0 ? (
+            filteredInjections.map((product) => (
+              <div 
+                key={product.id}
+                className="group bg-white rounded-lg border border-gray-200 overflow-hidden hover:border-blue-300 hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
+                onClick={() => setSelectedProduct(product)}
+              >
+                {/* Image */}
+                <div className="relative h-32 sm:h-40 md:h-48 overflow-hidden bg-gradient-to-br from-blue-50 to-white">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://via.placeholder.com/300x300?text=Medicine+Image";
+                    }}
+                  />
+                  {/* Badges */}
+                  <div className="absolute top-2 right-2 flex flex-col gap-1">
+                    {product.isNew && <span className="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold animate-pulse">NEW</span>}
+                    {product.isHot && <span className="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold">HOT</span>}
+                    {product.prescription && <span className="bg-blue-600 text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold">RX</span>}
+                  </div>
+                  {/* Stock */}
+                  {product.stock && (
+                    <div className="absolute bottom-2 left-2">
+                      <span className={`text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
+                        product.stock === "In Stock" 
+                          ? "bg-green-100 text-green-800 border border-green-300"
+                          : product.stock === "Limited Stock"
+                          ? "bg-yellow-100 text-yellow-800 border border-yellow-300"
+                          : "bg-red-100 text-red-800 border border-red-300"
+                      }`}>
+                        {product.stock}
+                      </span>
                     </div>
-                    <button className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2.5 rounded-lg font-bold text-sm flex items-center justify-center gap-2 min-w-[100px]">
-                      <Search className="w-4 h-4" />
-                      Search
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="p-2 sm:p-3">
+                  {/* Category */}
+                  <div className="mb-1">
+                    <span className="text-[10px] text-blue-600 font-medium uppercase">
+                      {product.type.split('/')[0]}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-xs sm:text-sm font-bold text-gray-900 mb-2 line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem] group-hover:text-blue-700 transition-colors">
+                    {product.name}
+                  </h3>
+
+                  {/* Price */}
+                  <div className="flex items-baseline justify-between mb-3">
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-sm sm:text-base font-bold text-gray-900">
+                        ₹{product.price.toLocaleString()}
+                      </span>
+                      {product.discount && (
+                        <span className="text-[10px] text-gray-400 line-through">
+                          ₹{product.discount.toLocaleString()}
+                        </span>
+                      )}
+                    </div>
+                    {product.rating && (
+                      <div className="flex items-center gap-1">
+                        <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                        <span className="text-xs font-medium">{product.rating}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* View Button */}
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedProduct(product);
+                    }}
+                    className="w-full py-1.5 sm:py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-xs sm:text-sm font-medium rounded-lg transition-all duration-300 shadow-sm hover:shadow-md"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-blue-100 to-blue-200 rounded-full flex items-center justify-center">
+                <Syringe className="w-8 h-8 text-blue-500" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-700 mb-2">No injections found</h3>
+              <p className="text-gray-600 mb-4 max-w-md mx-auto">
+                Try adjusting your filters or search for something else
+              </p>
+              <button 
+                onClick={() => {
+                  setSelectedCategory("all");
+                  setSearchQuery("");
+                }}
+                className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-medium hover:shadow-lg transition-all"
+              >
+                Reset Filters
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Modal for Product Details */}
+        {selectedProduct && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setSelectedProduct(null)}>
+            <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-slide-up" onClick={(e) => e.stopPropagation()}>
+              {/* Header */}
+              <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex justify-between items-center">
+                <div>
+                  <h2 className="text-lg font-bold">Product Details</h2>
+                  <p className="text-blue-100 text-sm">{selectedProduct.type}</p>
+                </div>
+                <button 
+                  onClick={() => setSelectedProduct(null)}
+                  className="p-2 hover:bg-white/20 rounded-full transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Content */}
+              <div className="p-4">
+                {/* Image */}
+                <div className="relative h-48 sm:h-64 mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-blue-50 to-white">
+                  <img 
+                    src={selectedProduct.image} 
+                    alt={selectedProduct.name} 
+                    className="w-full h-full object-contain p-4"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://via.placeholder.com/400x400?text=Medicine+Image";
+                    }}
+                  />
+                </div>
+
+                {/* Info */}
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-1">{selectedProduct.name}</h3>
+                    {selectedProduct.brand && <p className="text-sm text-gray-600">by {selectedProduct.brand}</p>}
+                  </div>
+
+                  {/* Rating */}
+                  {selectedProduct.rating && (
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1">
+                        <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                        <span className="font-medium">{selectedProduct.rating}</span>
+                      </div>
+                      <span className="text-sm text-gray-500">({Math.floor(Math.random() * 100) + 50} reviews)</span>
+                    </div>
+                  )}
+
+                  {/* Price */}
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-2xl font-bold text-gray-900">
+                      ₹{selectedProduct.price.toLocaleString()}
+                    </span>
+                    {selectedProduct.discount && (
+                      <>
+                        <span className="text-lg text-gray-400 line-through">
+                          ₹{selectedProduct.discount.toLocaleString()}
+                        </span>
+                        <span className="text-xs bg-gradient-to-r from-green-500 to-green-600 text-white px-2 py-1 rounded font-bold">
+                          Save ₹{(selectedProduct.discount - selectedProduct.price).toLocaleString()}
+                        </span>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Description */}
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-2">Description</h4>
+                    <p className="text-sm text-gray-700 leading-relaxed">{selectedProduct.description}</p>
+                  </div>
+
+                  {/* Details Grid */}
+                  <div className="grid grid-cols-2 gap-3 py-4 border-t border-b border-gray-200">
+                    {selectedProduct.dosage && (
+                      <div>
+                        <p className="text-xs text-gray-500 mb-1">Dosage</p>
+                        <p className="text-sm font-medium text-gray-900">{selectedProduct.dosage}</p>
+                      </div>
+                    )}
+                    {selectedProduct.storage && (
+                      <div>
+                        <p className="text-xs text-gray-500 mb-1">Storage</p>
+                        <p className="text-sm font-medium text-gray-900">{selectedProduct.storage}</p>
+                      </div>
+                    )}
+                    {selectedProduct.quantity && (
+                      <div>
+                        <p className="text-xs text-gray-500 mb-1">Package</p>
+                        <p className="text-sm font-medium text-gray-900">{selectedProduct.quantity}</p>
+                      </div>
+                    )}
+                    {selectedProduct.delivery && (
+                      <div>
+                        <p className="text-xs text-gray-500 mb-1">Delivery</p>
+                        <p className="text-sm font-medium text-gray-900 flex items-center gap-1">
+                          <Truck className="w-3 h-3 text-blue-600" />
+                          {selectedProduct.delivery}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Stock Status */}
+                  {selectedProduct.stock && (
+                    <div className={`px-3 py-2 rounded-lg ${
+                      selectedProduct.stock === "In Stock" 
+                        ? "bg-green-100 text-green-800"
+                        : selectedProduct.stock === "Limited Stock"
+                        ? "bg-yellow-100 text-yellow-800"
+                        : "bg-red-100 text-red-800"
+                    }`}>
+                      <span className="font-medium">{selectedProduct.stock}</span>
+                    </div>
+                  )}
+
+                  {/* Action Buttons */}
+                  <div className="flex gap-3 pt-2">
+                    <button className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-lg transition-all hover:shadow-lg">
+                      Add to Cart
+                    </button>
+                    <button className="px-4 py-3 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-bold rounded-lg transition-colors">
+                      <Heart className="w-5 h-5" />
                     </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        ))}
-
-        
-      </div>
-
-      {/* Main Content */}
-      <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8">
-        {/* Mobile Filter Toggle */}
-        <div className="lg:hidden mb-4">
-          <button
-            onClick={() => setShowMobileFilters(!showMobileFilters)}
-            className="flex items-center justify-between w-full p-3 bg-white rounded-lg shadow-sm border border-gray-200"
-          >
-            <div className="flex items-center gap-2">
-              <Filter className="w-4 h-4" />
-              <span className="font-medium">Filters & Sort</span>
-            </div>
-            <ChevronDown className={`w-4 h-4 transition-transform ${showMobileFilters ? 'rotate-180' : ''}`} />
-          </button>
-        </div>
-
-        {/* Category Filters - Blue Yellow Theme */}
-        <div className={`${showMobileFilters ? 'block' : 'hidden lg:block'} mb-6 sm:mb-8`}>
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 sm:mb-6">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Browse Injections</h2>
-              <p className="text-sm text-gray-600">Filter by category or storage requirements</p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-              {/* Sort By */}
-              <div className="relative w-full sm:w-auto">
-                <select 
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
-                >
-                  <option value="featured">Featured</option>
-                  <option value="price-low">Price: Low to High</option>
-                  <option value="price-high">Price: High to Low</option>
-                  <option value="rating">Highest Rating</option>
-                  <option value="newest">Newest</option>
-                </select>
-                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
-              </div>
-
-              {/* View Toggle */}
-              <div className="flex items-center gap-1 bg-blue-50 p-1 rounded-lg">
-                <button
-                  onClick={() => setViewMode("grid")}
-                  className={`p-2 rounded-md transition-all text-sm ${
-                    viewMode === "grid" 
-                      ? "bg-blue-600 text-white shadow-sm" 
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  Grid
-                </button>
-                <button
-                  onClick={() => setViewMode("list")}
-                  className={`p-2 rounded-md transition-all text-sm ${
-                    viewMode === "list" 
-                      ? "bg-blue-600 text-white shadow-sm" 
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  List
-                </button>
-              </div>
-            </div>
-          </div>
-
-         
-        </div>
-
-       
-
-        {/* Products Grid/List - Using MedicineCard Component */}
-        <div className="mb-8 sm:mb-12">
-          <div className={`${viewMode === "grid" 
-            ? "grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" 
-            : "space-y-4"
-          }`}>
-            {filteredInjections.map((injection) => (
-              <MedicineCard
-                key={injection.id}
-                product={injection}
-                type={viewMode}
-                onViewDetails={handleViewDetails}
-              />
-            ))}
-          </div>
-
-          {/* No Results */}
-          {filteredInjections.length === 0 && (
-            <div className="text-center py-10 sm:py-12">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-blue-50 rounded-full flex items-center justify-center">
-                <Syringe className="w-8 h-8 sm:w-10 sm:h-10 text-blue-400" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-gray-700 mb-2">No injections found</h3>
-              <p className="text-sm text-gray-600 max-w-md mx-auto px-4">
-                Try adjusting your filters or browse other categories
-              </p>
-            </div>
-          )}
-        </div>
-
-        {/* Information Cards - Blue Yellow Theme */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
-          {/* Storage Guide */}
-          <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl p-4 sm:p-6 border border-blue-200 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
-                <Snowflake className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </div>
-              <div>
-                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">Storage Requirements</h2>
-                <p className="text-sm text-blue-600">Proper storage ensures safety and efficacy</p>
-              </div>
-            </div>
-            
-            <div className="space-y-3">
-              <div className="flex items-start gap-3 p-3 bg-white rounded-lg border border-blue-200">
-                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Thermometer className="w-4 h-4 text-blue-600" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-800 mb-1 text-sm">Cold Chain (2-8°C)</h4>
-                  <p className="text-gray-600 text-xs">• Insulin, Biologics, Vaccines</p>
-                  <p className="text-gray-600 text-xs">• Use medical refrigerator</p>
-                  <p className="text-gray-600 text-xs">• Never freeze</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-3 p-3 bg-white rounded-lg border border-blue-200">
-                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Home className="w-4 h-4 text-blue-600" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-800 mb-1 text-sm">Room Temperature</h4>
-                  <p className="text-gray-600 text-xs">• Vitamins, Antibiotics</p>
-                  <p className="text-gray-600 text-xs">• Store in cool, dry place</p>
-                  <p className="text-gray-600 text-xs">• Avoid direct sunlight</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Safety Information */}
-          <div className="bg-gradient-to-br from-yellow-50 to-white rounded-xl p-4 sm:p-6 border border-yellow-200 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-yellow-600 to-yellow-500 rounded-lg flex items-center justify-center">
-                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </div>
-              <div>
-                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">Safety Guidelines</h2>
-                <p className="text-sm text-yellow-600">Important safety instructions for injections</p>
-              </div>
-            </div>
-            
-            <div className="space-y-2">
-              {[
-                "Requires valid medical prescription",
-                "Professional administration recommended",
-                "Check expiry date before use",
-                "Store away from children and pets",
-                "Dispose of sharps properly",
-                "Monitor for allergic reactions"
-              ].map((item, index) => (
-                <div key={index} className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full flex-shrink-0 mt-1.5"></div>
-                  <span className="text-sm text-gray-700">{item}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Warning Box */}
-            <div className="mt-4 p-3 bg-yellow-100 border border-yellow-300 rounded-lg">
-              <div className="flex items-center gap-2 mb-1">
-                <AlertCircle className="w-4 h-4 text-yellow-700" />
-                <span className="font-bold text-yellow-800 text-sm">Important Notice</span>
-              </div>
-              <p className="text-xs text-yellow-700">
-                Injectable medicines should only be used under medical supervision. 
-                Do not self-administer without proper training.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Section - Blue Yellow */}
-        <div className="bg-gradient-to-r from-blue-700 to-blue-800 rounded-xl p-4 sm:p-6 text-center text-white shadow-lg">
-          <div className="inline-flex items-center gap-2 bg-yellow-500/20 backdrop-blur-sm px-3 py-1.5 rounded-full mb-4">
-            <Phone className="w-3.5 h-3.5 text-yellow-400" />
-            <span className="text-xs sm:text-sm font-bold">24/7 Emergency Support</span>
-          </div>
-          
-          <h2 className="text-lg sm:text-xl font-bold mb-3">Need Professional Advice?</h2>
-          <p className="text-sm sm:text-base mb-4 text-blue-100 max-w-lg mx-auto">
-            Our licensed pharmacists are available 24/7 to help you understand injectable medicines, 
-            dosage, and administration guidelines.
-          </p>
-          <div className="flex flex-col xs:flex-row gap-3 justify-center">
-            <button className="bg-white text-blue-700 hover:bg-gray-100 px-4 py-2.5 rounded-lg font-bold hover:scale-105 transition-all flex items-center justify-center gap-2 text-sm">
-              <span className="text-base">👨‍⚕️</span>
-              Chat with Pharmacist
-            </button>
-            <button className="bg-white/10 backdrop-blur-lg border-2 border-white/30 hover:bg-white/20 px-4 py-2.5 rounded-lg font-bold hover:scale-105 transition-all flex items-center justify-center gap-2 text-sm">
-              <Phone className="w-4 h-4" />
-              1800-123-4567
-            </button>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

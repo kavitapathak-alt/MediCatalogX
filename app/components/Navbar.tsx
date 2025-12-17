@@ -15,7 +15,6 @@ export default function Navbar() {
     { name: "Pregnancy", href: "/pregnancy", badge: "NEW" },
     { name: "Tubes", href: "/tubes" },
     { name: "Injections", href: "/injections", badge: "SALE" },
-    { name: "Healthcare", href: "/healthcare", sale: true },
   ];
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export default function Navbar() {
                 <span className="text-xs sm:text-sm font-medium">100% Genuine</span>
               </div>
             </div>
-            
+
             {/* Right - Emergency & Phone */}
             <div className="flex items-center gap-2 sm:gap-3">
               <div className="flex items-center gap-1.5 bg-yellow-500/90 px-2.5 py-1 rounded-full">
@@ -50,7 +49,7 @@ export default function Navbar() {
               </div>
               <div className="hidden sm:flex items-center gap-1.5">
                 <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                <span className="text-xs sm:text-sm font-medium whitespace-nowrap">1800-123-4567</span>
+                <span className="text-xs sm:text-sm font-medium whitespace-nowrap">9903241021</span>
               </div>
             </div>
           </div>
@@ -91,11 +90,7 @@ export default function Navbar() {
                   {item.hot && (
                     <span className="absolute -top-1 -right-1 text-xs">🔥</span>
                   )}
-                  {item.sale && (
-                    <span className="absolute -top-1 -right-1 px-1.5 py-0.5 text-[8px] font-bold bg-yellow-500 text-white rounded-full">
-                      SALE
-                    </span>
-                  )}
+                  
                 </a>
               ))}
             </div>
@@ -121,7 +116,7 @@ export default function Navbar() {
               </button>
 
               {/* Mobile Search Button */}
-              <button 
+              <button
                 onClick={() => setShowMobileSearch(!showMobileSearch)}
                 className="lg:hidden p-2 rounded-lg bg-gray-100 hover:bg-gray-200"
               >
@@ -162,7 +157,7 @@ export default function Navbar() {
                   className="w-full py-2.5 pl-10 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-sm"
                 />
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <button 
+                <button
                   onClick={() => setShowMobileSearch(false)}
                   className="absolute right-3 top-1/2 -translate-y-1/2"
                 >
@@ -190,11 +185,7 @@ export default function Navbar() {
                       </span>
                     )}
                     {item.hot && <span className="text-xs">🔥</span>}
-                    {item.sale && (
-                      <span className="px-2 py-0.5 text-xs font-bold bg-yellow-500 text-white rounded-full">
-                        SALE
-                      </span>
-                    )}
+                   
                   </a>
                 ))}
               </div>
@@ -217,7 +208,7 @@ export default function Navbar() {
                   <Phone className="w-4 h-4 text-red-600" />
                   <span className="text-sm font-bold text-gray-900">Emergency</span>
                 </div>
-                <div className="text-lg font-bold text-red-600">1800-123-4567</div>
+                <div className="text-lg font-bold text-red-600">9903241021</div>
                 <div className="text-xs text-gray-600">24/7 Medical Support</div>
               </div>
             </div>

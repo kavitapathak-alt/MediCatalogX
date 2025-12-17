@@ -291,8 +291,8 @@ export default function HealthcarePage() {
             className={`absolute inset-0 transition-opacity duration-500 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
           >
             {/* Background Image */}
-            <img 
-              src={slide.image} 
+            <img
+              src={slide.image}
               alt=""
               className="w-full h-full object-cover"
             />
@@ -313,12 +313,12 @@ export default function HealthcarePage() {
                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 leading-tight">
                   {slide.title}
                 </h1>
-                
+
                 {/* Subtitle */}
                 <p className="text-sm sm:text-base text-white/90 mb-4 max-w-md">
                   {slide.subtitle}
                 </p>
-                
+
                 {/* Search Bar */}
                 <div className="max-w-md">
                   <div className="flex flex-col sm:flex-row gap-2">
@@ -343,13 +343,13 @@ export default function HealthcarePage() {
         ))}
 
         {/* Navigation Buttons */}
-        <button 
+        <button
           onClick={prevSlide}
           className="absolute left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all z-20"
         >
           ←
         </button>
-        <button 
+        <button
           onClick={nextSlide}
           className="absolute right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all z-20"
         >
@@ -380,11 +380,11 @@ export default function HealthcarePage() {
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Browse Healthcare Products</h2>
               <p className="text-sm text-gray-600">Filter by category or equipment type</p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               {/* Sort By */}
               <div className="relative w-full sm:w-auto">
-                <select 
+                <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
                   className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
@@ -402,21 +402,19 @@ export default function HealthcarePage() {
               <div className="flex items-center gap-1 bg-blue-50 p-1 rounded-lg">
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={`p-2 rounded-md transition-all text-sm ${
-                    viewMode === "grid" 
-                      ? "bg-blue-600 text-white shadow-sm" 
+                  className={`p-2 rounded-md transition-all text-sm ${viewMode === "grid"
+                      ? "bg-blue-600 text-white shadow-sm"
                       : "text-gray-600 hover:text-gray-900"
-                  }`}
+                    }`}
                 >
                   Grid
                 </button>
                 <button
                   onClick={() => setViewMode("list")}
-                  className={`p-2 rounded-md transition-all text-sm ${
-                    viewMode === "list" 
-                      ? "bg-blue-600 text-white shadow-sm" 
+                  className={`p-2 rounded-md transition-all text-sm ${viewMode === "list"
+                      ? "bg-blue-600 text-white shadow-sm"
                       : "text-gray-600 hover:text-gray-900"
-                  }`}
+                    }`}
                 >
                   List
                 </button>
@@ -432,11 +430,10 @@ export default function HealthcarePage() {
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                    selectedCategory === category.id
+                  className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === category.id
                       ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-sm"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}
+                    }`}
                 >
                   <span className="text-base">{category.icon}</span>
                   {category.name}
@@ -456,11 +453,10 @@ export default function HealthcarePage() {
                 <button
                   key={type.id}
                   onClick={() => setSelectedEquipment(type.id)}
-                  className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                    selectedEquipment === type.id
+                  className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedEquipment === type.id
                       ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-sm"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}
+                    }`}
                 >
                   <span className="text-base">{type.icon}</span>
                   {type.name}
@@ -497,10 +493,10 @@ export default function HealthcarePage() {
 
         {/* Products Grid/List */}
         <div className="mb-8 sm:mb-12">
-          <div className={`${viewMode === "grid" 
-            ? "grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" 
+          <div className={`${viewMode === "grid"
+            ? "grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
             : "space-y-4"
-          }`}>
+            }`}>
             {sortedProducts.map((product) => (
               <MedicineCard
                 key={product.id}
@@ -588,7 +584,7 @@ export default function HealthcarePage() {
                 <p className="text-sm text-blue-600">Certified medical devices with warranty</p>
               </div>
             </div>
-            
+
             <div className="space-y-3">
               <div className="flex items-start gap-3 p-3 bg-white rounded-lg border border-blue-200">
                 <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -601,7 +597,7 @@ export default function HealthcarePage() {
                   <p className="text-gray-600 text-xs">• ISO certified manufacturing</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-3 p-3 bg-white rounded-lg border border-blue-200">
                 <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Package className="w-4 h-4 text-blue-600" />
@@ -627,7 +623,7 @@ export default function HealthcarePage() {
                 <p className="text-sm text-yellow-600">Comprehensive healthcare support</p>
               </div>
             </div>
-            
+
             <div className="space-y-2">
               {[
                 "Free delivery on orders above ₹499",
@@ -651,7 +647,7 @@ export default function HealthcarePage() {
                 <span className="font-bold text-blue-800 text-sm">Important Note</span>
               </div>
               <p className="text-xs text-blue-700">
-                Some medical devices require proper training for use. We provide free 
+                Some medical devices require proper training for use. We provide free
                 training sessions and user manuals with all complex equipment.
               </p>
             </div>
@@ -669,7 +665,7 @@ export default function HealthcarePage() {
               All monitoring devices calibrated for clinical accuracy with regular quality checks.
             </p>
           </div>
-          
+
           <div className="bg-white rounded-xl p-4 sm:p-6 border border-gray-200 shadow-sm">
             <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
               <Truck className="w-5 h-5 text-yellow-600" />
@@ -679,7 +675,7 @@ export default function HealthcarePage() {
               Same day delivery in metro cities. Installation support for complex equipment.
             </p>
           </div>
-          
+
           <div className="bg-white rounded-xl p-4 sm:p-6 border border-gray-200 shadow-sm">
             <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
               <Phone className="w-5 h-5 text-blue-600" />
@@ -707,8 +703,8 @@ export default function HealthcarePage() {
               { name: "Cipla", logo: "💊", color: "bg-blue-50" },
               { name: "GSK", logo: "🏥", color: "bg-yellow-50" }
             ].map((brand, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer"
               >
                 <div className={`w-12 h-12 mx-auto mb-3 ${brand.color} rounded-full flex items-center justify-center text-xl`}>
@@ -726,10 +722,10 @@ export default function HealthcarePage() {
             <Phone className="w-3.5 h-3.5 text-yellow-400" />
             <span className="text-xs sm:text-sm font-bold">24/7 Healthcare Support</span>
           </div>
-          
+
           <h2 className="text-lg sm:text-xl font-bold mb-3">Need Medical Equipment Guidance?</h2>
           <p className="text-sm sm:text-base mb-4 text-blue-100 max-w-lg mx-auto">
-            Connect with our healthcare experts for personalized equipment recommendations, 
+            Connect with our healthcare experts for personalized equipment recommendations,
             usage guidance, and post-purchase support.
           </p>
           <div className="flex flex-col xs:flex-row gap-3 justify-center">
@@ -739,7 +735,7 @@ export default function HealthcarePage() {
             </button>
             <button className="bg-white/10 backdrop-blur-lg border-2 border-white/30 hover:bg-white/20 px-4 py-2.5 rounded-lg font-bold hover:scale-105 transition-all flex items-center justify-center gap-2 text-sm">
               <Phone className="w-4 h-4" />
-              Call: 1800-123-4567
+              Call: 9903241021
             </button>
           </div>
         </div>

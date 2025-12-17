@@ -54,18 +54,18 @@ const Footer = () => {
                 MedStore
               </span>
             </div>
-            
+
             <p className="text-blue-300 text-sm mb-4 leading-relaxed">
               Your trusted healthcare partner since 2010.
             </p>
-            
+
             {/* Emergency Contact */}
             <div className="p-3 rounded-lg bg-gradient-to-r from-yellow-600/20 to-yellow-500/20 border border-yellow-500/30 mb-4">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-yellow-400" />
                 <div>
                   <div className="text-[10px] text-blue-300">24/7 Emergency</div>
-                  <div className="text-sm font-bold">1800-123-4567</div>
+                  <div className="text-sm font-bold">9903241021</div>
                 </div>
               </div>
             </div>
@@ -89,8 +89,8 @@ const Footer = () => {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link 
-                    href={link.href} 
+                  <Link
+                    href={link.href}
                     className="flex items-center gap-2 text-blue-300 hover:text-yellow-400 transition-colors text-sm"
                   >
                     <ChevronRight className="w-3 h-3" />
@@ -107,8 +107,8 @@ const Footer = () => {
             <ul className="space-y-2">
               {categories.map((category) => (
                 <li key={category.name}>
-                  <Link 
-                    href={category.href} 
+                  <Link
+                    href={category.href}
                     className="flex items-center gap-2 text-blue-300 hover:text-yellow-400 transition-colors text-sm"
                   >
                     <ChevronRight className="w-3 h-3" />
@@ -127,7 +127,7 @@ const Footer = () => {
                 <Phone className="w-4 h-4 text-yellow-400 mt-0.5" />
                 <div className="text-sm">
                   <div className="text-blue-300">Helpline</div>
-                  <div className="font-bold">1800-123-4567</div>
+                  <div className="font-bold">9903241021</div>
                 </div>
               </div>
 
@@ -135,7 +135,7 @@ const Footer = () => {
                 <Mail className="w-4 h-4 text-yellow-400 mt-0.5" />
                 <div className="text-sm">
                   <div className="text-blue-300">Email</div>
-                  <div className="font-bold">support@medstore.com</div>
+                  <div className="font-bold">mpnidhiimp1970@gmail.com</div>
                 </div>
               </div>
 
@@ -143,7 +143,7 @@ const Footer = () => {
                 <MapPin className="w-4 h-4 text-yellow-400 mt-0.5" />
                 <div className="text-sm">
                   <div className="text-blue-300">Address</div>
-                  <div className="font-bold">Mumbai, India</div>
+                  <div className="font-bold">Manipur, India</div>
                 </div>
               </div>
 
@@ -167,7 +167,7 @@ const Footer = () => {
             <p className="text-blue-300">
               © 2024 <span className="font-bold text-yellow-400">MedStore</span>. All rights reserved.
             </p>
-            
+
             <div className="flex items-center gap-2">
               <span className="text-blue-300">Made with</span>
               <Heart className="w-3 h-3 text-red-500 animate-pulse" />
