@@ -6,7 +6,7 @@ import { Pill, Filter, Search, Shield, Thermometer, ChevronDown, Phone, Star, Tr
 const generalMedicines = [
   {
     id: 1,
-    name: "Paracetamol 500mg",
+    name: "Frusemeg-Plus Tablets",
     type: "Analgesic & Antipyretic",
     storage: "Room Temperature",
     price: 25,
@@ -25,7 +25,7 @@ const generalMedicines = [
   },
   {
     id: 2,
-    name: "Amoxicillin 250mg",
+    name: "Spironot-F",
     type: "Antibiotic",
     storage: "Room Temperature",
     price: 120,
@@ -44,7 +44,7 @@ const generalMedicines = [
   },
   {
     id: 3,
-    name: "Cetirizine 10mg",
+    name: "Evrysdi 60mg",
     type: "Antihistamine",
     storage: "Room Temperature",
     price: 45,
@@ -62,7 +62,7 @@ const generalMedicines = [
   },
   {
     id: 4,
-    name: "Omeprazole 20mg",
+    name: "Iressa 250mg",
     type: "Proton Pump Inhibitor",
     storage: "Room Temperature",
     price: 85,
@@ -81,7 +81,7 @@ const generalMedicines = [
   },
   {
     id: 5,
-    name: "Metformin 500mg",
+    name: "Zytiga 500mg",
     type: "Anti-diabetic",
     storage: "Room Temperature",
     price: 65,
@@ -99,7 +99,7 @@ const generalMedicines = [
   },
   {
     id: 6,
-    name: "Atorvastatin 10mg",
+    name: "Tagrisso 80mg",
     type: "Cholesterol Lowering",
     storage: "Room Temperature",
     price: 95,
@@ -118,7 +118,7 @@ const generalMedicines = [
   },
   {
     id: 7,
-    name: "Vitamin C 500mg",
+    name: "Lorbrena",
     type: "Vitamin Supplement",
     storage: "Cool & Dry Place",
     price: 40,
@@ -135,7 +135,7 @@ const generalMedicines = [
   },
   {
     id: 8,
-    name: "Diclofenac 50mg",
+    name: "Zerodol SP 50mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -153,7 +153,7 @@ const generalMedicines = [
   },
   {
     id: 9,
-    name: "Diclofenac 50mg",
+    name: "Lynparza 100mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -171,7 +171,7 @@ const generalMedicines = [
   },
    {
     id: 10,
-    name: "Diclofenac 50mg",
+    name: "Verzenio",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -188,7 +188,7 @@ const generalMedicines = [
     category: "pain"
   }, {
     id: 11,
-    name: "Diclofenac 50mg",
+    name: "Tolvat 30mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -206,7 +206,7 @@ const generalMedicines = [
   },
    {
     id: 12,
-    name: "Diclofenac 50mg",
+    name: "Padcev E.V.",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -224,7 +224,7 @@ const generalMedicines = [
   },
    {
     id: 13,
-    name: "Diclofenac 50mg",
+    name: "Jakavi 15mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -242,7 +242,7 @@ const generalMedicines = [
   },
   {
     id: 14,
-    name: "Diclofenac 50mg",
+    name: "Xeloda 500mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -260,7 +260,7 @@ const generalMedicines = [
   },
   {
     id: 15,
-    name: "Diclofenac 50mg",
+    name: "Inlyta 1mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -278,7 +278,7 @@ const generalMedicines = [
   },
   {
     id: 16,
-    name: "Diclofenac 50mg",
+    name: "Padcev E.V.",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -296,7 +296,7 @@ const generalMedicines = [
   },
   {
     id: 17,
-    name: "Diclofenac 50mg",
+    name: "Votrient 400mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -314,7 +314,7 @@ const generalMedicines = [
   },
   {
     id: 18,
-    name: "Diclofenac 50mg",
+    name: "carboplatin 450mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -332,7 +332,7 @@ const generalMedicines = [
   },
   {
     id: 19,
-    name: "Diclofenac 50mg",
+    name: "Vesanoid 10mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -350,7 +350,7 @@ const generalMedicines = [
   },
   {
     id: 20,
-    name: "Diclofenac 50mg",
+    name: "MabThera 100mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -368,7 +368,7 @@ const generalMedicines = [
   },
   {
     id: 21,
-    name: "Diclofenac 50mg",
+    name: "Xeljanz XR 5mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -385,7 +385,7 @@ const generalMedicines = [
     category: "pain"
   },{
     id: 22,
-    name: "Diclofenac 50mg",
+    name: "Lonsurf ",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -402,7 +402,7 @@ const generalMedicines = [
     category: "pain"
   },{
     id: 23,
-    name: "Diclofenac 50mg",
+    name: "Piqray 150mg+150mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -420,7 +420,7 @@ const generalMedicines = [
   },
   {
     id: 24,
-    name: "Diclofenac 50mg",
+    name: "Tygacil 50mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -438,7 +438,7 @@ const generalMedicines = [
   },
   {
     id: 25,
-    name: "Diclofenac 50mg",
+    name: "Abinutuzumab 100mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -456,7 +456,7 @@ const generalMedicines = [
   },
   {
     id: 26,
-    name: "Diclofenac 50mg",
+    name: "Adcetris 50mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -474,7 +474,7 @@ const generalMedicines = [
   },
   {
     id: 27,
-    name: "Diclofenac 50mg",
+    name: "Evrysdi 35mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,
@@ -492,7 +492,7 @@ const generalMedicines = [
   },
   {
     id: 28,
-    name: "Diclofenac 50mg",
+    name: "Lynparza 100mg",
     type: "NSAID (Pain Relief)",
     storage: "Room Temperature",
     price: 35,

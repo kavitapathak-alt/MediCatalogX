@@ -219,7 +219,25 @@ const tubeProducts = [
     stock: "In Stock",
     delivery: "24 hours",
     category: "combination"
-  }
+  },
+  {
+  "id": 13,
+  "name": "Zandu Balm",
+  "type": "Topical Analgesic",
+  "storage": "Room Temperature",
+  "price": 65,
+  "prescription": false,
+  "image": "https://cdn.zeptonow.com/production/ik-seo/tr:w-470,ar-690-700,pr-true,f-auto,q-40,dpr-2/cms/product_variant/f1b3482b-64ce-4e6e-bd5f-9343e3101fa5/Zandu-Balm.jpeg",
+  "description": "Classic Ayurvedic pain relief balm made with natural ingredients like Menthol, Camphor, and Eucalyptus oil. Provides relief from headaches, body aches, and muscle pains.",
+  "rating": 4.4,
+  "brand": "Zandu",
+  "dosage": "10g",
+  "quantity": "1 Jar",
+  "isNew": false,
+  "stock": "In Stock",
+  "delivery": "4 hours",
+  "category": "topical"
+}
 ];
 
 const heroSlides = [

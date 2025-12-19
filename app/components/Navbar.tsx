@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Menu,
   X,
@@ -14,11 +14,16 @@ import {
   Heart,
   Sparkles,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
+  const router = useRouter();
+  const searchRef = useRef<HTMLInputElement>(null);
+
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
+  const [search, setSearch] = useState("");
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -35,158 +40,139 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    /* ✅ WHOLE HEADER STICKY */
-    <div className="w-full sticky top-0 z-[999] bg-white">
-      {/* ================= TOP ANNOUNCEMENT BAR ================= */}
-      <div className="w-full bg-gradient-to-r from-blue-700 via-blue-600 to-blue-800 text-white">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 py-2">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
-            <div className="flex flex-wrap items-center gap-2">
-              <div className="flex items-center gap-1.5 bg-white/20 px-2.5 py-1 rounded-full">
-                <Package className="w-4 h-4" />
-                <span className="text-xs sm:text-sm font-medium">
-                  Free Delivery ₹499+
-                </span>
-              </div>
-              <div className="hidden sm:flex items-center gap-1.5 bg-white/20 px-2.5 py-1 rounded-full">
-                <Shield className="w-4 h-4" />
-                <span className="text-xs sm:text-sm font-medium">
-                  100% Genuine
-                </span>
-              </div>
-            </div>
+  useEffect(() => {
+    if (showMobileSearch) {
+      setTimeout(() => searchRef.current?.focus(), 100);
+    }
+  }, [showMobileSearch]);
 
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1.5 bg-yellow-500 px-2.5 py-1 rounded-full">
-                <Sparkles className="w-4 h-4" />
-                <span className="text-xs sm:text-sm font-bold">
-                  24/7 Emergency
-                </span>
-              </div>
-              <div className="hidden sm:flex items-center gap-1.5">
-                <Phone className="w-4 h-4" />
-                <span className="text-xs sm:text-sm font-medium">
-                  9903241021
-                </span>
-              </div>
-            </div>
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!search.trim()) return;
+    router.push(`/search?q=${encodeURIComponent(search)}`);
+    setShowMobileSearch(false);
+  };
+
+  return (
+    <div className="w-full sticky top-0 z-[999] bg-white">
+      {/* TOP BAR */}
+      <div className="w-full bg-gradient-to-r from-blue-700 to-blue-800 text-white">
+        <div className="max-w-7xl mx-auto px-3 py-2 flex justify-between items-center">
+          <div className="flex gap-2">
+            <span className="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full text-xs">
+              <Package className="w-4 h-4" /> Free Delivery ₹499+
+            </span>
+            <span className="hidden sm:flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full text-xs">
+              <Shield className="w-4 h-4" /> 100% Genuine
+            </span>
           </div>
+          <span className="flex items-center gap-1 bg-yellow-500 px-3 py-1 rounded-full text-xs font-bold">
+            <Sparkles className="w-4 h-4" /> 24/7 Emergency
+          </span>
         </div>
       </div>
 
-      {/* ================= MAIN NAVBAR ================= */}
-      <nav
-        className={`w-full transition-all ${
-          isScrolled ? "shadow-lg" : "shadow-sm"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-3 sm:px-4">
-          <div className="flex items-center justify-between h-16 sm:h-20">
+      {/* MAIN NAVBAR */}
+      <nav className={`transition ${isScrolled ? "shadow-lg" : "shadow-sm"}`}>
+        <div className="max-w-7xl mx-auto px-3">
+          <div className="flex justify-between items-center h-16 sm:h-20">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-blue-700 to-blue-800 flex items-center justify-center">
-                <Pill className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 rounded-xl bg-blue-700 flex items-center justify-center">
+                <Pill className="text-white" />
               </div>
-              <h1 className="text-xl sm:text-2xl font-bold text-blue-800">
-                MedStore
-              </h1>
+              <h1 className="text-xl font-bold text-blue-800">MedStore</h1>
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center gap-1">
+            <div className="hidden lg:flex gap-2">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="relative px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-700 rounded-lg hover:bg-blue-50 transition"
+                  className="relative px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg"
                 >
                   {item.name}
                   {item.badge && (
-                    <span className="absolute -top-1 -right-1 px-1.5 py-0.5 text-[9px] bg-red-500 text-white rounded-full">
+                    <span className="absolute -top-1 -right-1 text-[9px] bg-red-500 text-white px-1 rounded-full">
                       {item.badge}
                     </span>
                   )}
                   {item.hot && (
-                    <span className="absolute -top-1 -right-1 text-xs">
-                      🔥
-                    </span>
+                    <span className="absolute -top-1 -right-1 text-xs">🔥</span>
                   )}
                 </a>
               ))}
             </div>
 
-            {/* Right Actions */}
+            {/* Right */}
             <div className="flex items-center gap-2">
               {/* Desktop Search */}
-              <div className="hidden lg:block relative">
+              <form
+                onSubmit={handleSearch}
+                className="hidden lg:block relative"
+              >
                 <input
-                  type="text"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search medicines..."
-                  className="w-56 py-1.5 pl-9 pr-3 text-sm border rounded-lg"
+                  className="w-56 pl-9 pr-3 py-2 border rounded-lg text-sm"
                 />
-                <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              </div>
+                <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+              </form>
 
-              {/* Wishlist */}
-              <button className="hidden sm:flex relative p-2 rounded-lg bg-pink-50">
-                <Heart className="w-5 h-5 text-pink-600" />
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-pink-500 text-white text-xs rounded-full flex items-center justify-center">
-                  5
-                </span>
+              <button className="hidden sm:flex p-2 rounded-lg bg-pink-100">
+                <Heart className="text-pink-600" />
               </button>
 
-              {/* Cart */}
-              <button className="relative p-2 rounded-lg bg-blue-50">
-                <ShoppingCart className="w-5 h-5 text-blue-700" />
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-yellow-500 text-white text-xs rounded-full flex items-center justify-center">
-                  3
-                </span>
+              <button className="p-2 rounded-lg bg-blue-100">
+                <ShoppingCart className="text-blue-700" />
               </button>
 
-              {/* Login */}
-              <button className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-700 text-white text-sm">
+              <button className="hidden sm:flex items-center gap-2 bg-blue-700 text-white px-4 py-2 rounded-lg text-sm">
                 <User className="w-4 h-4" /> Login
               </button>
 
-              {/* Mobile Search */}
+              {/* MOBILE SEARCH ICON (FIXED VISIBILITY) */}
               <button
                 onClick={() => setShowMobileSearch(!showMobileSearch)}
-                className="lg:hidden p-2 rounded-lg bg-gray-100"
+                className="lg:hidden p-2 rounded-lg bg-blue-700 text-white"
               >
-                <Search className="w-5 h-5" />
+                <Search />
               </button>
 
-              {/* Mobile Menu */}
+              {/* MOBILE MENU ICON (FIXED VISIBILITY) */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="lg:hidden p-2 rounded-lg bg-gray-100"
+                className="lg:hidden p-2 rounded-lg bg-blue-700 text-white"
               >
                 {isOpen ? <X /> : <Menu />}
               </button>
             </div>
           </div>
 
-          {/* Mobile Search */}
+          {/* MOBILE SEARCH */}
           {showMobileSearch && (
-            <div className="lg:hidden pb-3">
+            <form onSubmit={handleSearch} className="pb-3">
               <input
-                type="text"
+                ref={searchRef}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search medicines..."
                 className="w-full py-2 px-4 border rounded-lg"
               />
-            </div>
+            </form>
           )}
 
-          {/* Mobile Menu */}
+          {/* MOBILE MENU */}
           {isOpen && (
-            <div className="lg:hidden py-3 border-t">
+            <div className="lg:hidden pb-4">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="block py-3 px-4 rounded-lg bg-blue-800 text-white mb-1"
+                  className="block bg-blue-700 text-white px-4 py-3 rounded-lg mb-2"
                 >
                   {item.name}
                 </a>
