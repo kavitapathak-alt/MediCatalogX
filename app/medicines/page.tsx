@@ -507,7 +507,43 @@ const generalMedicines = [
     stock: "In Stock",
     delivery: "3 hours",
     category: "pain"
-  }
+  },
+  {
+id: 29,
+name: "Kamraga Oral Gel",
+type: "Topical Analgesic (Pain Relief Gel)",
+storage: "Room Temperature, away from direct heat",
+price: 18,
+prescription: false,
+image: "https://5.imimg.com/data5/SELLER/Default/2024/5/418881443/FK/KY/WS/133082746/kamagra-fx-oral-jelly-500x500.jpg", // Replace with actual image URL for Kamraga Oral Gel
+description: "Kamraga Oral Gel is a topical analgesic gel formulated for quick relief from mouth ulcers, gum pain, soreness, and inflammation in the oral cavity. Provides a protective coating and soothes discomfort.",
+rating: 4.3,
+brand: "Kamrada Pharmaceuticals",
+dosage: "Apply a small amount to the affected area 3-4 times a day.",
+quantity: "15g tube",
+discount: 8,
+stock: "In Stock",
+delivery: "2 hours",
+category: "oral_care" // Suggested new category, could also be "pain"
+},
+{
+id: 30,
+name: "Bevac 400mg Injection",
+type: "Antineoplastic (Monoclonal Antibody)",
+storage: "Refrigerate at 2°C to 8°C. Do not freeze.",
+price: 18500,
+prescription: true,
+image: "https://cdn01.pharmeasy.in/dam/products/024365/bevac-vial-of-1ml-vaccine-3-1739969263.jpg?dim=480x480&q=75", // Replace with actual Bevacizumab injection image URL
+description: "Bevacizumab is a monoclonal antibody used in the treatment of various cancers, including colorectal, lung, and glioblastoma. It works by inhibiting angiogenesis (formation of new blood vessels that supply tumors).",
+rating: 4.5,
+brand: "Roche",
+dosage: "5-15 mg/kg intravenously every 2-3 weeks as per oncologist's prescription.",
+quantity: "1 vial (16ml)",
+discount: 5,
+stock: "In Stock",
+delivery: "24 hours",
+category: "oncology"
+}
 ];
 
 const heroSlides = [
